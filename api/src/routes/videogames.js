@@ -4,6 +4,7 @@ const axios = require('axios')
 const { Videogames, Genres } = require('../db')
 const { API_KEY } = process.env;
 
+
 //Obtener un listado de los videojuegos
 //Debe devolver solo los datos necesarios para la ruta principal
 //query: Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
@@ -12,16 +13,17 @@ const { API_KEY } = process.env;
 
 router.get('/', (req, res, next) => {
     const { name } = req.query;
-    let vgApi_1 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${1}`);
-    let vgApi_2 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${2}`);
-    let vgApi_3 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${3}`);
-    let vgApi_4 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${4}`);
-    let vgApi_5 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${5}`);
+    let vgApi_1 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${1}`);
+    let vgApi_2 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${2}`);
+    let vgApi_3 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${3}`);
+    // let vgApi_4 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${4}`);
+    // let vgApi_5 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=${5}`);
     // let vgApi_search = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`);
-    let videogamesDb = Videogames.findAll({ include: Genres,});
+    let videogamesDb = Videogames.findAll({include: Genres});
     // let findGamesDb = Videogames.findAll({ include: Genres, where:{ name: {
     //     [Op.iLike]: "%" + name + "%"
     // }}});
+    //{ include: [{model : Genres}, {attributes: ['name']}],}
    
     if(name){
         let gamesFilteredApi = []
@@ -43,7 +45,7 @@ router.get('/', (req, res, next) => {
         })
 
     } else {
-        Promise.all([vgApi_1, vgApi_2, vgApi_3, vgApi_4, vgApi_5, videogamesDb])
+        Promise.all([vgApi_1, vgApi_2, vgApi_3, videogamesDb])
         .then((response) => {
             const gamesApi = [];
             response.map(item => item.data? gamesApi.push(...item.data.results): gamesApi.push(...item))
