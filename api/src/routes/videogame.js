@@ -6,17 +6,22 @@ const { Videogames } = require('../db')
 //Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
 //Crea un videojuego en la base de datos
 router.post('/', async (req, res, next) => {
-    const { name, description, image, rating, release } = req.body
+    const { name, description, image, rating, release, platforms } = req.body
   //  console.log(req.body)
-    const newVideogame = await Videogames.create({
-        name, 
-        release,
-        description,
-        image,
-        rating, 
-
-    })
-    res.json({msj: 'entre a: /videogame'})
+  try {
+      const newVideogame = await Videogames.create({
+          name, 
+          release,
+          description,
+          image,
+          rating,
+          platforms, 
+        })
+        res.status(201).json(newVideogame)
+      
+  } catch (error) {
+      next(error)
+  }
    
 });
 

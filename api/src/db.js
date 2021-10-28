@@ -33,12 +33,12 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Videogames, Genres } = sequelize.models;
 
 Videogames.belongsToMany(Genres, {
-  through: "VideogamesGenres",
+  through: "videogames_genres",
   timestamps: false,
 })
 
 Genres.belongsToMany(Videogames, {
-  through: "VideogamesGenres",
+  through: "videogames_genres",
   timestamps: false,
 })
 
