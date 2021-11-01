@@ -1,0 +1,11 @@
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading h2 {
+    font-size: 5rem;
+    font-family: monospace;
+    font-weight: 600;
+}

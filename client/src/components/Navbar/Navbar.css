@@ -1,0 +1,15 @@
+
+
+.nav .nav-links {
+    text-decoration: none;
+    color: rgb(123, 202, 255);
+    font-weight: 500;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+}
+
+.nav .nav-links:hover {
+    color: rgb(75, 198, 255);
+    text-shadow: rgb(0, 0, 0) 1px 1px 5px;
+}
+

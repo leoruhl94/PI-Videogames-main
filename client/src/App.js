@@ -1,15 +1,25 @@
 import './App.css';
-import { CreateGame } from './components/CreateGame/CreateGame';
-import { Home } from './components/Home/Home';
-import { Landing } from './components/Landing/Landing';
+import { CreateGame } from './containers/CreateGame/CreateGame';
+import { Home } from './containers/Home/Home';
+import { Landing } from './containers/Landing/Landing';
+import { Route, Switch } from 'react-router-dom';
+import { GameDetail } from './containers/GameDetail/GameDetail';
+import { Header } from './components/Header/Header';
+//require('dotenv').config();
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
-      <Landing/>
-      <Home />
-      <CreateGame/>
+
+      <Switch>
+        <Route path="/" exact> <Landing/> </Route>
+        <Route path="/home" exact> <Header/> <Home/> </Route>
+        <Route path="/create" exact> <CreateGame/> </Route>
+        <Route path="/detail/:id" exact> <Header/> <GameDetail/> </Route>
+        
+      </Switch>
+      
     </div>
   );
 }
