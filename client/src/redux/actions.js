@@ -49,10 +49,19 @@ export const sort = (order) => {
         payload: order,
     }
 }
+
 export const changePage = (page) => {
+    console.log('page: ',page)
     return {
         type: CHANGE_PAGE,
         payload: page,
     }
 }
 
+export const getCurrentGames = () => {
+    console.log('soy el get current Games')
+    return {
+        type: GET_CURRENT_PAGE,
+        payload: '',
+    }
+}

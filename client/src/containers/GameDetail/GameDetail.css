@@ -1,0 +1,19 @@
+.videogame-detail{
+    background-color: lightblue;
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    font-size: 1.6rem;
+    font-family: monospace;
+}
+
+.videogame-detail img{
+    max-width: 100%;
+}
+
+.videogame-detail h2{
+    padding: 2.5rem 0;
+}

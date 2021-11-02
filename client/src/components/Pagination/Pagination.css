@@ -1,0 +1,16 @@
+.pagination {
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 50%;
+    background-color: darkblue;
+    padding: 1rem 2.5rem;
+}
+
+.pagination .page-item {
+    padding: .5rem .8rem;
+    margin: auto .2rem;
+    font-weight: 600;
+}
+.pagination .page-item:hover {
+    background-color: cyan;
+}

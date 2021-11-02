@@ -13,7 +13,6 @@ export const Header = () => {
       const currentPath = location.pathname;
       console.log(currentPath)
       setPath(currentPath.split('/')[1])
-      console.log(path)
     }, [location]);
 
 

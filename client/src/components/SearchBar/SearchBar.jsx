@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchVideogames } from '../../redux/actions';
+import { changePage, searchVideogames, getCurrentGames } from '../../redux/actions';
 
 export const SearchBar = () => {
     const [search, setSearch] = useState('')
-    let dispatch = useDispatch()
+    let dispatch = useDispatch();
+    
     const onChange = (e) =>{
-        setSearch(e.target.value)
-        
+        setSearch(e.target.value)  
     }
-
+    
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(searchVideogames(search))
+        dispatch(changePage(1))
+        dispatch(getCurrentGames())
+        setSearch(''); 
     }
 
     return (
