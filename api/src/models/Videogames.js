@@ -24,15 +24,16 @@ module.exports = (sequelize) => {
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
     image: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
-    platforms: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true,
+    createdInDb: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
     },
   },
   {
