@@ -1,33 +1,29 @@
+import './Filters.css';
 import { useDispatch } from "react-redux";
-import { ASC, DESC } from "../../constantes/filters";
-import { sort } from "../../redux/actions";
+import { getVideogames } from "../../redux/actions";
+import { WidgetOrderByName } from "../WidgetOrderByName/WidgetOrderByName";
+import { WidgetOrderByRating } from '../WidgetOrderByRating/WidgetOrderByRating';
+import { WidgetFilterFrom } from '../WidgetFilterFrom/WidgetFilterFrom';
+import { SelectedFilter } from '../SelectedFilters/SelectedFilters';
+import { WidgetFilterGenres } from '../WidgetFilterGenres/WidgetFilterGenres';
 
 export const Filters = () => {
   let dispatch = useDispatch();
-  const onChangeOrder = (e) => {
-      if(e.target.value !== 'select')
-          dispatch(sort(e.target.value))
+
+  const handleOnClick = (e) => {
+    let target = e.target.value;
+    console.log(target)
+    if(target==='reset') dispatch(getVideogames())
   }
 
   return (
-    <div>
-      <div>
-        <h3>genres</h3>
-        <select name="genres" id="genres">
-          <option value="1"></option>
-          <option value="2"></option>
-        </select>
-      </div>
-      <div>
-        <h3>order</h3>
-        <select name="order" id="order" onChange={onChangeOrder}>
-          <option value='select'>Selecciona..</option>
-          <option value={ASC} >{ASC}</option>
-          <option value={DESC}>{DESC}</option>
-        </select>
-      </div>
-
-      <button>reset</button>
-    </div>
+    <aside>
+      <SelectedFilter/>
+      <WidgetOrderByName/>
+      <WidgetOrderByRating/>
+      <WidgetFilterFrom/>
+      <WidgetFilterGenres/>
+      <button type='button' onClick={handleOnClick} value='reset'>reset</button>
+    </aside>
   );
 };

@@ -1,30 +1,36 @@
 import { Navbar } from '../Navbar/Navbar';
 import { SearchBar } from '../SearchBar/SearchBar';
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './Header.css';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getVideogames } from '../../redux/actions';
 
 
 export const Header = () => {
     const location = useLocation();
     const [path, setPath] = useState('/')
+    let dispatch = useDispatch();
 
     useEffect(() => {
       const currentPath = location.pathname;
       console.log(currentPath)
       setPath(currentPath.split('/')[1])
     }, [location]);
-
+    
+    const handleOnClick = (e) =>{
+        dispatch(getVideogames())
+    }
 
     return (
             path === 'detail' ?
 
-            <div className="main-header">   
-                <NavLink to='/home' className='logo'>LOGO</NavLink>   
+            <div className="main-header" >   
+                <Link to='/home' className='logo' onClick={handleOnClick}>LOGO</Link>   
             </div>
             :
             <div className="main-header">   
-                <NavLink to='/home' className='logo'>LOGO</NavLink>  
+                <Link to='/home' className='logo' onClick={handleOnClick}>LOGO</Link>  
                 <SearchBar/>
                 <Navbar/> 
             </div>

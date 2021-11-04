@@ -20,10 +20,15 @@ export const CreateGame = () =>{
     let history = useHistory()
     const onChange = (e) => {
         e.preventDefault()
-        setGame({
-            ...game,
-            [e.target.name]: e.target.value
+        console.log(e.target.value,'=>name', e.target.name)
+        setGame((data)=>{
+            const stado = {...data,
+            [e.target.name]: e.target.value}
+            console.log(stado)
+            return stado
         })
+        
+        console.log(game)
     }
     const onSubmit = (e) => {
         e.preventDefault();
@@ -43,6 +48,7 @@ export const CreateGame = () =>{
 
                 <fieldset>
                     <label htmlFor="name" > Name: </label>
+                    <div>{game.name}</div>
                     <input type="text" name='name' onChange={onChange} value={game.name}/>
                 </fieldset>
 

@@ -1,25 +1,19 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { animationStart } from '../../assets/animations/animarions';
+import { getGenres, getPlatforms } from '../../redux/actions';
 import './Landing.css'
 
 export const Landing = () =>{
-    const signs = document.querySelectorAll('x-sign')
-    const randomIn = (min, max) => (
-        Math.floor(Math.random() * (max - min + 1) + min)
-    )
 
-    const mixupInterval = el => { 
-    const ms = randomIn(2000, 4000)
-         el.style.setProperty('--interval', `${ms}ms`)
-    }
-
-    signs.forEach(el => {
-        mixupInterval(el)
-        el.addEventListener('webkitAnimationIteration', () => {
-            mixupInterval(el)
-        })
-    })
-
-
+    let dispatch = useDispatch();
+    useEffect( () => {
+        dispatch(getPlatforms())
+        dispatch(getGenres())
+        animationStart()
+    },[dispatch])
+    
     return (
         <div className="landing">
             <Link to='/home'>

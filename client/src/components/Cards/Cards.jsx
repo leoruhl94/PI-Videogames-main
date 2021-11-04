@@ -6,20 +6,17 @@ import { Loading } from "../Loading/Loading";
 import './Cards.css';
 
 export const Cards = () => {
-    const games = useSelector( (state) => state.gamesPerPage )
-    const all = useSelector( (state) => state.filteredGames )
+    const games = useSelector( (state) => state.gamesPerPage );
+    const all = useSelector( (state) => state.filteredGames );
     const currentPage = useSelector((state) => state.currentPage);
     let dispatch = useDispatch();
     useEffect( () => {
         dispatch(getCurrentGames())
-    }, [all])
+    }, [all,dispatch])
     useEffect( () => {
         dispatch(getCurrentGames())
-    }, [currentPage])
+    }, [currentPage, dispatch])
     
-    console.log(currentPage,'===CP')
-    console.log('games:cards=>',games)
-
     return (
         <div className='cards-container'>
             {

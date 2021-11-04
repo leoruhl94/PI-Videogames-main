@@ -14,7 +14,7 @@ function App() {
 
       <Switch>
         <Route path="/" exact> <Landing/> </Route>
-        <Route path="/home" exact> <Header/> <Home/> </Route>
+        <Route path="/home" > <Header/> <Home/> </Route>
         <Route path="/create" exact> <CreateGame/> </Route>
         <Route path="/detail/:id" exact> <Header/> <GameDetail/> </Route>
         

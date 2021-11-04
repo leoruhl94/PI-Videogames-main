@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { changePage, getVideogames, getCurrentGames } from '../../redux/actions'
+import {  getGenres, getPlatforms, getVideogames } from '../../redux/actions'
 import { Filters } from '../../components/Filters/Filters';
 import { Pagination } from "../../components/Pagination/Pagination";
 import './Home.css'
@@ -10,14 +10,18 @@ export const Home = () =>{
 
     let dispatch = useDispatch();
     useEffect( () => {
+        dispatch(getPlatforms())
+        dispatch(getGenres())
         dispatch(getVideogames())
-        // dispatch(getCurrentGames())
-    }, [])
+    }, [dispatch])
 
     return (
         <section className="home">
             <Pagination/>
-            <Cards/>
+            <div>
+                <Filters/>
+                <Cards/>
+            </div>
         </section>
     )
 }

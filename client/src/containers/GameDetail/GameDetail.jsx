@@ -14,10 +14,8 @@ export const GameDetail = () => {
             setGame(game);
         })
         .catch(err => console.error(err))
-    }, [])
-    let elemento = document.querySelector("#algo");
-    console.log(elemento)
-    
+    }, [id])
+
     return (
         <div className="videogame-detail">
             {
@@ -25,8 +23,8 @@ export const GameDetail = () => {
                 <>  
                     <img src={game.image} alt={`${game.name}`} />
                     <h2>{game.name}</h2>
-                    <div id="algo" className="videogame-description">
-                         { game.description}
+                    <div className="videogame-description" dangerouslySetInnerHTML={{ __html: game.description }}>
+
                     </div>
                     <span>
                         {game.rating}
