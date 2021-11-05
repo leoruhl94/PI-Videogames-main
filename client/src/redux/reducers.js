@@ -20,7 +20,7 @@ const initialState = {
   videogames: [],
   filteredGames: [],
   genres: [],
-  plaforms: [],
+  platforms: [],
   filterFrom: FROM_ALL,
   filters: [],
   order: "",
@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
     case GET_PLATFORMS:
       return {
         ...state,
-        genres: action.payload,
+        platforms: action.payload,
       };
 
     case GET_VIDEOGAMES:

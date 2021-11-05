@@ -26,11 +26,11 @@ export const Header = () => {
             path === 'detail' ?
 
             <div className="main-header" >   
-                <Link to='/home' className='logo' onClick={handleOnClick}>LOGO</Link>   
+                <Link to='/' className='logo' onClick={handleOnClick}>LOGO</Link>   
             </div>
             :
             <div className="main-header">   
-                <Link to='/home' className='logo' onClick={handleOnClick}>LOGO</Link>  
+                <Link to='/' className='logo' onClick={handleOnClick}>LOGO</Link>  
                 <SearchBar/>
                 <Navbar/> 
             </div>

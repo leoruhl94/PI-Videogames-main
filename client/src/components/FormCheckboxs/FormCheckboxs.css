@@ -1,0 +1,14 @@
+.form-checkboxs {
+  /* display: flex; */
+  /* flex-direction: row;
+  flex-wrap: wrap;  */
+  background-color: aquamarine;
+  width: 45%;
+  /* align-items: flex-start; */
+
+}
+.form-checkboxs label {
+    /* display: block; */
+    background-color: azure;
+    margin: 1px;
+}

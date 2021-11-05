@@ -1,0 +1,11 @@
+.border-error {
+    border: 2px solid red;
+}
+.border-ok {
+    border: 2px solid greenyellow;
+}
+
+.input-text-component {
+    display: flex;
+    border: 2px solid blue;
+}

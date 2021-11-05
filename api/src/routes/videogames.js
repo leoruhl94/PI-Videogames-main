@@ -68,7 +68,7 @@ router.get('/', (req, res, next) => {
                     createdInDb: item.createdInDb || false,
                 }
             })
-/*____*/console.log(videogamesFilteredApi.length, '=====', gamesApi.length, '=====', response.length)
+/*____*///console.log(videogamesFilteredApi.length, '=====', gamesApi.length, '=====', response.length)
         videogamesFilteredApi = videogamesFilteredApi.sort((a,b)=> {
             return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
             } )

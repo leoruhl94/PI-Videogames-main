@@ -9,16 +9,16 @@
     padding: 2rem;
     align-items:center
 }
-.game-form label{
+/* .game-form label{
     width: 100%;
     font-size: 2rem;
-}
-.game-form input{
+} */
+/* .game-form input{
     min-width: 70%;
     margin: 1rem;
     font-size: 2rem;
     line-height: 2rem;
-}
+} */
 .game-form button {
     margin: 1rem;
     font-size: 1.8rem;
