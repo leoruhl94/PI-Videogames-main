@@ -9,19 +9,30 @@ export const FormListOptions = ({ options, handler, title, group, validation, na
   const [ error, setError ] = useState({error: false, msjError})
 
   useEffect(()=>{
-    setItems(options?.map(e => e.name))
+    setItems(options)
     setSelectedItems([])
+    console.log("ENTRE AL EFECT__________")
   },[options])
 
 
-  const handleOnChange = (value, selected) => {
-      let newItems = selected ? items.filter( e => e !== value ) : [...items, value];
-
-      let newSelectedItems = !selected ? selectedItems.filter( e => e !== value ) : [...selectedItems, value];
+  const handleOnChange = (value) => {
+      let newItems = value.selected ? items.filter( e => e.id !== value.id ) : [...items, { name:value.name, id: value.id }];
+      // console.log("EL FILTER_____", items.filter( e =>{ 
+      //   console.log("==================================")
+      //   console.log((e.id !== value.id), e.id , value.id) 
+      //   console.log("==================================")
+      //   if(e.id !== value.id)
+      //   return(e)
+      // }))
+      let newSelectedItems = !value.selected ? selectedItems.filter( x => x.id !== value.id ) : [...selectedItems, { name:value.name, id: value.id }];
       validation(newSelectedItems) ? setError({error: false, msjError:""}) : setError({ error:true, msjError })  
       setItems(newItems)
       setSelectedItems(newSelectedItems)
-      handler({value:newSelectedItems, error: !validation(newSelectedItems) , name})
+      handler({value:newSelectedItems.map( x => x.id), error: !validation(newSelectedItems) , name})
+      
+  // console.log("lo que llega",value, validation(newSelectedItems) )
+  // console.log("NIT",newItems)
+  // console.log("SI", newSelectedItems)
     }
     
 
@@ -34,8 +45,9 @@ export const FormListOptions = ({ options, handler, title, group, validation, na
               selectedItems?.map((item) => {
                 return (
                   <OptionItem 
-                    key={`${group}-${item}`}
-                    name= {item}
+                    key={`${group}-${item.id}`}
+                    name= {item.name}
+                    value= {item.id}
                     handler={handleOnChange}
                     selected={true}
                     />
@@ -51,10 +63,10 @@ export const FormListOptions = ({ options, handler, title, group, validation, na
           {
             items?.map((item) => {
               return (
-                <li key={`${group}-${item}`}>
+                <li key={`${group}-${item.name}`}>
                   <OptionItem 
-                  
-                    name= {item}
+                    name= {item.name}
+                    value= {item.id}
                     handler={handleOnChange}
                     selected={false}
                     />

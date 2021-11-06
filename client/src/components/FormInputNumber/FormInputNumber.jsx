@@ -16,12 +16,12 @@ export const FormInputNumber = ({
 
   const handleOnChange = (e) => {
     const { value, name } = e.target;
-    if (validation(value, minValue, maxValue)) {
+    if (validation(Number(value), Number(minValue), Number(maxValue))) {
       setState({ value, error: false, msjError: "" });
-      handler({ name, value, error: false });
+      handler({ name, value: Number(value), error: false });
     } else {
       setState({ value, error: true, msjError });
-      handler({ name, value, error: true });
+      handler({ name, value: Number(value), error: true });
     }
   };
 

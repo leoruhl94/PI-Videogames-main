@@ -11,7 +11,7 @@ export const validateOptions = (value) => {
     return ( !!value.length );
 }
 export const validateRating = (value, min, max) => {
-    return (Number(value) >= min && Number(value) <= max);
+    return (value >= min && value <= max);
 }
 export const getActualDate = () => {
     const date = new Date();

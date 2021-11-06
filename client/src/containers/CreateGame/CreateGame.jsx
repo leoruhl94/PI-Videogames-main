@@ -43,7 +43,7 @@ export const CreateGame = () =>{
         name: true,
         description: true,
         rating: true,
-        release: true,
+        released: true,
         image: true,
         platforms:true,
         genres: true,
@@ -131,7 +131,7 @@ export const CreateGame = () =>{
                     />
                     <FormInputDate
                         label= "Date: "
-                        name= "release"
+                        name= "released"
                         handler={handleOnChange}
                         msjError= "Debes seleccionar una Fecha"
                         validation={validateText}

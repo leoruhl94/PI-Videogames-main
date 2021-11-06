@@ -3,18 +3,31 @@ const router = Router();
 const { Videogames, Genres, Platforms } = require("../db");
 const { API_KEY } = process.env;
 const axios = require("axios");
+const { validateText, validateNumber, validateArray, validateUrl, validateDate} = require("../controllers/validations");
 
 
 
 //Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
 //Crea un videojuego en la base de datos
 router.post("/", async (req, res, next) => {
-  const { name, description, image, rating, release, platforms, genres } = req.body;
+  const { name, description, image, rating, released, platforms, genres } = req.body;
+  let error = [];
+
+  !validateText(name) ? error = [...error, { input: "name", err: "name no puede estar vacio y debe ser tipo string"}] : error = [...error];
+  !validateNumber(rating,0,5)? error = [...error, {input: "rating", err:" rating no puede estar vacio y debe ser un numero entre 0 y 5"}] : error = [...error];
+  !validateDate(released)? error = [...error, {input: "released", err:"no es una fecha valida"}] : error = [...error];
+  !validateText(description)? error = [...error, {input: "description", err:"description no puede estar vacio y debe ser tipo string"}] : error = [...error];
+  !validateUrl(image)? error = [...error, {input: "image", err:"image no puede estar vacio y debe ser una url valida"}] : error = [...error];
+  !validateArray(genres, "number")? error = [...error, {input: "genres", err:"genres debe ser un array de numeros y contener al menos 1 elemento"}] : error = [...error];
+  !validateArray(platforms, "number")? error = [...error, {input: "platforms", err:"platforms debe ser un array de numeros y contener al menos 1 elemento"}] : error = [...error];
+
+ 
+  if(error.length) return res.status(400).json(error); 
 
   try {
     const newVideogame = await Videogames.create({
       name,
-      release,
+      released,
       description,
       image,
       rating,
@@ -27,7 +40,7 @@ router.post("/", async (req, res, next) => {
     next(error);
   }
 });
-
+ 
 
 //Obtener el detalle de un videojuego en particular
 //Debe traer solo los datos pedidos en la ruta de detalle de videojuego

@@ -30,7 +30,7 @@ export const GameDetail = () => {
                         {game.rating}
                     </span>
                     <span>
-                        {game.release}
+                        {game.released.slice(0,11)}
                     </span>
                     
                     <div className="videogame-tags">
