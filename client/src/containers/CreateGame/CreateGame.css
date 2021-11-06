@@ -40,3 +40,7 @@
     border: none;
     padding: 2rem;
 }
+
+.border-error {
+    border: 2px solid red;
+}

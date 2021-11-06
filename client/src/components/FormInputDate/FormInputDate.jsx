@@ -1,13 +1,14 @@
 import { useState } from "react";
-import "./FormInputText.css";
+import "./FormInputDate.css";
 
-export const FormInputText = ({
+export const FormInputDate = ({
   label,
   name,
-  placeholder,
   validation,
   handler,
   msjError,
+  min,
+  max
 }) => {
   const [state, setState] = useState({});
 
@@ -22,17 +23,18 @@ export const FormInputText = ({
     }
   };
 
+
   return (
-    <div className="input-text-component">
+    <div className="input-date-component">
       <label htmlFor={name}> {label} </label>
       <input
         id={`id-${name}`}
-        type="text"
+        type="date"
         name={name}
-        placeholder={placeholder}
-     //   value={state.value}
         onChange={handleOnChange}
         className={state.error ? "border-error" : ""}
+        min={min}
+        max={max}
       />
       {state.error ? <p>{state.msjError}</p> : ""}
     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./FormInputText.css";
+import "./FormInputCheckbox.css";
 
 export const FormInputText = ({
   label,
@@ -30,7 +30,7 @@ export const FormInputText = ({
         type="text"
         name={name}
         placeholder={placeholder}
-     //   value={state.value}
+        value={state.name}
         onChange={handleOnChange}
         className={state.error ? "border-error" : ""}
       />

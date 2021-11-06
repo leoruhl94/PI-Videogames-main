@@ -5,7 +5,7 @@ import { Filters } from '../../components/Filters/Filters';
 import { Pagination } from "../../components/Pagination/Pagination";
 import './Home.css'
 import { Cards } from "../../components/Cards/Cards";
-import { FormInputText } from "../../components/FormInputText/FormInputText";
+
 
 export const Home = () =>{
 
@@ -19,13 +19,6 @@ export const Home = () =>{
     return (
         <section className="home">
             <Pagination/>
-            <FormInputText
-              label= "Ingresa tu nombre"
-              name= "name"
-              placeholder="nombre"
-              handler={(value) => console.log(value)}
-              msjError= "hola soy el error"
-            ></FormInputText>
             <div>
                 <Filters/>
                 <Cards/>

@@ -1,13 +1,15 @@
 import { useState } from "react";
-import "./FormInputText.css";
+import "./FormInputTextArea.css";
 
-export const FormInputText = ({
+export const FormInputTextArea = ({
   label,
   name,
   placeholder,
   validation,
   handler,
   msjError,
+  rows,
+  cols
 }) => {
   const [state, setState] = useState({});
 
@@ -23,17 +25,17 @@ export const FormInputText = ({
   };
 
   return (
-    <div className="input-text-component">
+    <div className="input-textarea-component">
       <label htmlFor={name}> {label} </label>
-      <input
+      <textarea
         id={`id-${name}`}
-        type="text"
+        rows={rows}
+        cols={cols}
         name={name}
         placeholder={placeholder}
-     //   value={state.value}
         onChange={handleOnChange}
         className={state.error ? "border-error" : ""}
-      />
+      ></textarea>
       {state.error ? <p>{state.msjError}</p> : ""}
     </div>
   );
