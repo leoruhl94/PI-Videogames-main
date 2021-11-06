@@ -23,7 +23,7 @@ export const FormInputText = ({
   };
 
   return (
-    <div className="input-text-component">
+    <div className="input-text-component" > 
       <label htmlFor={name}> {label} </label>
       <input
         id={`id-${name}`}

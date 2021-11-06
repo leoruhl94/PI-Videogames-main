@@ -5,11 +5,14 @@ export const validateText = (value) => {
     return (!!value.length);
 }
 export const validateUrl = (value) => {
-    return (/^(ftp|http|https):\/\/[^ "]+$/.test(value) && value);
+    return (/^(ftp|http|https):\/\/[^ "]+$/.test(value) && !!value);
+}
+export const validateOptions = (value) => {
+    return ( !!value.length );
 }
 export const validateRating = (value, min, max) => {
     return (Number(value) >= min && Number(value) <= max);
- }
+}
 export const getActualDate = () => {
     const date = new Date();
     const dia = date.getDay() <= 9 ? "0"+ date.getDay() : date.getDay()

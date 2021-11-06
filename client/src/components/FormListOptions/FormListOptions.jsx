@@ -1,30 +1,68 @@
+import { useEffect, useState } from 'react';
+import { OptionItem } from '../OptionItem/OptionItem';
 import './FormListOptions.css'
 
-export const FormListOptions = ({ options, handle, title, group, validation=""}) => {
+
+export const FormListOptions = ({ options, handler, title, group, validation, name , msjError}) => {
+  const [ items, setItems ] = useState([])
+  const [ selectedItems, setSelectedItems ] = useState([]) 
+  const [ error, setError ] = useState({error: false, msjError})
+
+  useEffect(()=>{
+    setItems(options?.map(e => e.name))
+    setSelectedItems([])
+  },[options])
+
+
+  const handleOnChange = (value, selected) => {
+      let newItems = selected ? items.filter( e => e !== value ) : [...items, value];
+
+      let newSelectedItems = !selected ? selectedItems.filter( e => e !== value ) : [...selectedItems, value];
+      validation(newSelectedItems) ? setError({error: false, msjError:""}) : setError({ error:true, msjError })  
+      setItems(newItems)
+      setSelectedItems(newSelectedItems)
+      handler({value:newSelectedItems, error: !validation(newSelectedItems) , name})
+    }
+    
+
   return (
-    <div className="form-checkboxs">
+    <div className="form-list-options">
         <h3>{title}</h3>
-        <div className={`selected_options ${validation}`}>
-            supongamos que aca los seleccionamos
+        <div className={`selected_options ${error.error? "border-error" : "" }`}>
+            Selected Options:
+            {
+              selectedItems?.map((item) => {
+                return (
+                  <OptionItem 
+                    key={`${group}-${item}`}
+                    name= {item}
+                    handler={handleOnChange}
+                    selected={true}
+                    />
+                 );
+              })
+            }
+            {
+              error.error? <p>{error.msjError}</p>: ""
+            }
+
         </div>
-
-      {options?.map((item) => {
-        return (
-
-        
-        <label htmlFor={item.id}  key={`${group}-${item.id}`}>
-            <input
-                type="checkbox"
-                value={item.name}
-                name= {group}
-                onChange={handle}
-                id={item.id}
-              /> 
-            {item.name}
-          </label>
-
-        );
-      })}
+      <ul> {group}
+          {
+            items?.map((item) => {
+              return (
+                <li key={`${group}-${item}`}>
+                  <OptionItem 
+                  
+                    name= {item}
+                    handler={handleOnChange}
+                    selected={false}
+                    />
+                </li>
+              );
+            })
+          }
+      </ul>
     </div>
   );
 };

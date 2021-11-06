@@ -5,17 +5,18 @@ import { useHistory } from 'react-router';
 import { FormCheckboxs } from '../../components/FormCheckboxs/FormCheckboxs';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { FormInputText } from "../../components/FormInputText/FormInputText";
-import { validateText, validateRating, validateUrl, getActualDate } from "../../functions/functions";
+import { validateText, validateRating, validateUrl, getActualDate, validateOptions } from "../../functions/functions";
 import './CreateGame.css'
 import { getGenres, getPlatforms } from '../../redux/actions';
 import { FormInputNumber } from '../../components/FormInputNumber/FormInputNumber';
 import { FormInputTextArea } from '../../components/FormInputTextArea/FormInputTextArea';
 import { FormInputDate } from '../../components/FormInputDate/FormInputDate';
+import { FormListOptions } from '../../components/FormListOptions/FormListOptions';
 
 
 
 export const CreateGame = () =>{
-
+    console.log("RECARGUE DE NUEVO______________________________")
     const platforms = useSelector( state => state.platforms)
     const genres = useSelector( state => state.genres)
     let history = useHistory()
@@ -23,24 +24,20 @@ export const CreateGame = () =>{
     var dispatch = useDispatch();
 
         useEffect(()=>{
-            platforms.length || dispatch(getPlatforms())
             genres.length || dispatch(getGenres())
+            platforms.length || dispatch(getPlatforms())
         },[dispatch])
 
-    
-    console.log('genres', genres.length)
-    console.log( 'Platforms', platforms.length)
-    
-    const [game2, setGame2] = useState({})
+   
     const [allInputsOk, setAllInputsOk] = useState(false)
     const [game, setGame] = useState({
-        name: "",
-        description: "",
-        rating: "",
-        release: "",
-        image: "",
-        platforms:[],
-        genres:[],
+        // name: "",
+        // description: "",
+        // rating: "",
+        // release: "",
+        // image: "",
+        // platforms:[],
+        // genres:[],
     })
     const [error, setError] = useState({
         name: true,
@@ -74,77 +71,37 @@ export const CreateGame = () =>{
     }
 
     //__________________Input control___________________
-    const onChange = (e) => {
-        e.preventDefault()
-        let t =e.target
-        console.log(e.target.value,'=>name', e.target.name)
-        if(!t.value){
-            t.className='bad_input'
-            setError((e)=>{
-                return {
-                    ...e,
-                    [t.name]: true 
-                }
-     
-            })
-        } else {
-            t.className='good_input'
-            setError((e)=>{
-                return {
-                    ...e,
-                    [t.name]: false 
-                }
-            })
-        }
-        
-            setGame((data)=>{
-                const state = {...data,
-                [e.target.name]: e.target.value}
-                return state
-            })
-        
-        
-        console.log(error)
-    }
-   // console.log(error)
-  
-    const handleOnCheck = (e) => {
-        let t = e.target; 
-        if(t.checked){
-            setGame((data)=>{
-                const state = {
-                    ...data,
-                    [t.name]: [...data[t.name], t.value]
-                }
-                return state;
-            })
-        } else {
-            setGame((data)=>{
-                const state = {
-                    ...data,
-                    [t.name]: data[t.name].filter( item => item !== t.value)
-                }
-                return state;
-            })
-        }
-        
-        console.log('game state', game)
-        console.log('checkboxs-N', e.target.name)
-        console.log('checkboxs-V', e.target.value)
-        console.log('checkboxs-C', e.target.checked)
-    }
-   
+    
     const handleOnChange = ({value, error, name}) => {
+        
         console.log(value,'__', error,'__', name)
-        setGame2((state)=>{          
+        setGame((state)=>{          
             return {
                 ...state,
-                [name]: { value, error} 
+                [name]: value 
+            }
+        })
+        setError((state)=>{
+            return {
+                ...state,
+                [name]:  error 
             }
         })
     }
-console.log(getActualDate())
-    console.log('game2 state', game2)
+    const handleErrors = (errors) => {
+        let handled = true;
+        for (const key in errors) {
+            console.log(errors[key], "handleErrors")
+            if (errors[key]) {
+                handled = false;
+            }
+        }
+        console.log("handled------>", handled)
+        return handled
+    }
+
+    console.log('game state', game)
+    console.log('Errors', error);
     
     return (
         <div className="create-game">
@@ -160,17 +117,10 @@ console.log(getActualDate())
                         msjError= "Debe ingresar un Nombre"
                         validation={validateText}
                     />
-                    <FormInputText
-                        label= "Image URL: "
-                        name= "image"
-                        placeholder="http://www.image...."
-                        handler={handleOnChange}
-                        msjError= "URL no valida"
-                        validation={validateUrl}
-                    />
+            
                     <FormInputNumber
                         label= "Rating: "
-                        name= "image"
+                        name= "rating"
                         placeholder="4.65"
                         handler={handleOnChange}
                         msjError= "Debes ingresar un numero entre 0 y 5"
@@ -178,16 +128,6 @@ console.log(getActualDate())
                         step="0.01"
                         minValue= "0"
                         maxValue= "5" 
-                    />
-                    <FormInputTextArea
-                        label= "Description: "
-                        name= "description"
-                        placeholder="Añande una descripcion aqui..."
-                        handler={handleOnChange}
-                        msjError= "Debes ingresar una descripcion"
-                        validation={validateText}
-                        rows="4"
-                        cols="50"
                     />
                     <FormInputDate
                         label= "Date: "
@@ -198,52 +138,58 @@ console.log(getActualDate())
                         max={getActualDate()}
                     />
 
-
-
-                    {/* <div className="addGame-input-text">
-                        <label htmlFor="name" > Name: </label>
-                        <input type="text" name='name' id="name" onChange={onChange} value={game.name}/>
-                    </div> */}
-                    <div className="addGame-input-text">
-                        <label htmlFor="description"> Description: </label>
-                        <input required type="text" name='description' id="description" onChange={onChange} value={game.description}/>
-                    </div>
-
-                    <div className="addGame-input-date">
-                        <label htmlFor="release"> Release: </label>
-                        <input type="date" name='release' id="release" onChange={onChange} value={game.release}/>
-                    </div>
-
-                    <div className="addGame-input-number">
-                        <label htmlFor="rating"> Rating: </label>
-                        <input type="number" name='rating' id='rating'  onChange={onChange} value={game.rating}/>
-                    </div>
+                    <FormInputTextArea
+                        label= "Description: "
+                        name= "description"
+                        placeholder="Añande una descripcion aqui..."
+                        handler={handleOnChange}
+                        msjError= "Debes ingresar una descripcion"
+                        validation={validateText}
+                        rows="4"
+                        cols="50"
+                    />
+              
+    
+               
                 </fieldset>
 
                 <fieldset className="addGame-block2">
                     <div className="addGame-preview-image"><img src={game.image?game.image:""} alt="" /></div>
-                    <label htmlFor="image" > Image: </label>
-                    <input type="text" name='image' onChange={onChange} value={game.image}/>
+                    <FormInputText
+                        label= "Image URL: "
+                        name= "image"
+                        placeholder="http://www.image...."
+                        handler={handleOnChange}
+                        msjError= "URL no valida"
+                        validation={validateUrl}
+                    />
                 </fieldset>
 
                 <fieldset className="addGame-block3">
-                    <FormCheckboxs
+                    <FormListOptions
+                        title="Este es el titulo de Genres"
+                        group="Genres:"
+                        name="genres"
                         options={genres}
-                        handle={handleOnCheck}
-                        title='Genres:'
-                        group='genres'
+                        msjError="selecciona al menos una opcion"
+                        handler={handleOnChange}
+                        validation={validateOptions}
                     />
-                    <FormCheckboxs
+                    <FormListOptions
+                        title="Este es el titulo de Platforms"
+                        group="Platforms:"
+                        name="platforms"
                         options={platforms}
-                        handle={handleOnCheck}
-                        title='Platforms:'
-                        group='platforms'
+                        msjError="selecciona al menos una opcion"
+                        handler={handleOnChange}
+                        validation={validateOptions}
                     />
                 </fieldset>
 
                 <fieldset className="addGame-block4">
                     <button type="submit" value="Send"
-                    disabled={!allInputsOk}>
+                    disabled={!handleErrors(error)}
+                    >
                         Send
                     </button>
                     <button type="button" value="cancel">

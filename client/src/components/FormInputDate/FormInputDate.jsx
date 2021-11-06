@@ -10,9 +10,11 @@ export const FormInputDate = ({
   min,
   max
 }) => {
+
   const [state, setState] = useState({});
 
   const handleOnChange = (e) => {
+    e.preventDefault()
     const { value, name } = e.target;
     if (validation(value)) {
       setState({ value, error: false, msjError: "" });
