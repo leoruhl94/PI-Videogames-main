@@ -1,30 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './GameCard.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import Icon from "../../assets/Icon/Icon";
+import "./GameCard.css";
 
-
-export const GameCard = (props) =>{
-    const { id, img, name, rating, genres } = props;
-    let key = 0
-    return (
-  
-            <div className="game-card">
-                <div className="image-card">
-                    <img src={img} alt={name} />
-                </div>
-                <div className="details-card">
-                    <h2>{name}</h2>
-                    <span> {rating} </span>
-                    <ul> 
-                        {
-                        genres?.map(item => {
-                            return (
-                                <li key={key++}>{item}</li>
-                            )
-                        })}
-                    </ul>
-                    <Link to={`/detail/${id}`}> See More... </Link>
-                </div>
-            </div>
-    )
-}
+export const GameCard = (props) => {
+  const { id, img, name, rating, genres } = props;
+  let key = 0;
+  return (
+    <div className="game-card">
+      <Link to={`/detail/${id}`}>
+        <img className="game-card_img" src={img} alt={name} />
+        <div className="game-card_details">
+          <p className="game-card_details__title">{name}</p>
+          <div className="game-card_details__rating">
+            <span className="game-card_details__rating-icon2">
+              <Icon
+                svg={rating > 2.5 ? "starSolid" : "starOutline"}
+                title={rating > 2.5 ? "starSolid" : "starOutline"}
+              />
+            </span>
+            <span className="game-card_details__rating-text">
+              {rating} / 5{" "}
+            </span>
+          </div>
+          <div className="game-card_details__genres">
+            {genres?.map((item) => {
+              return (
+                <span className="game-card_details__genres-item" key={key++}>
+                  {item}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+};

@@ -3,10 +3,14 @@
     justify-content: center;
     align-items: center;
     background-image: url('../../assets/images/backgroud.jpg');
-    background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
-    margin: 0;
+    min-height: 100vh; 
+    /* background-size: 56% 100%; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: auto auto;
+
+  
 }
 
 .landing a{
