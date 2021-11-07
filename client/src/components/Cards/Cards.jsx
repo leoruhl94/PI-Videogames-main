@@ -18,7 +18,7 @@ export const Cards = () => {
     }, [currentPage, dispatch])
     
     return (
-        <div className='cards-container'>
+        <div className='cards'>
             {
                 games?.length ?
                 games?.map( item => {

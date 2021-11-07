@@ -6,7 +6,7 @@ import { FormCheckboxs } from '../../components/FormCheckboxs/FormCheckboxs';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { FormInputText } from "../../components/FormInputText/FormInputText";
 import { validateText, validateRating, validateUrl, getActualDate, validateOptions } from "../../functions/functions";
-import './CreateGame.css'
+import './AddGame.css'
 import { getGenres, getPlatforms } from '../../redux/actions';
 import { FormInputNumber } from '../../components/FormInputNumber/FormInputNumber';
 import { FormInputTextArea } from '../../components/FormInputTextArea/FormInputTextArea';
@@ -15,8 +15,7 @@ import { FormListOptions } from '../../components/FormListOptions/FormListOption
 
 
 
-export const CreateGame = () =>{
-    console.log("RECARGUE DE NUEVO______________________________")
+export const AddGame = () =>{
     const platforms = useSelector( state => state.platforms)
     const genres = useSelector( state => state.genres)
     let history = useHistory()
@@ -190,7 +189,7 @@ export const CreateGame = () =>{
                     <button type="submit" value="Send"
                     disabled={!handleErrors(error)}
                     >
-                        Send
+                        Add Game
                     </button>
                     <button type="button" value="cancel">
                         Cancel

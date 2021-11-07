@@ -17,7 +17,7 @@ export const Filters = () => {
   }
 
   return (
-    <aside>
+    <aside className="filters">
       <SelectedFilter/>
       <WidgetOrderByName/>
       <WidgetOrderByRating/>

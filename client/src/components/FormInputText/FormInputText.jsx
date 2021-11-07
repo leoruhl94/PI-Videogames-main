@@ -33,6 +33,7 @@ export const FormInputText = ({
      //   value={state.value}
         onChange={handleOnChange}
         className={state.error ? "border-error" : ""}
+        autoComplete="off"
       />
       {state.error ? <p>{state.msjError}</p> : ""}
     </div>

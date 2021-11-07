@@ -31,7 +31,7 @@ export const Header = () => {
             :
             <div className="main-header">   
                 <Link to='/' className='logo' onClick={handleOnClick}>LOGO</Link>  
-                <SearchBar/>
+                {/* <SearchBar/> */}
                 <Navbar/> 
             </div>
     

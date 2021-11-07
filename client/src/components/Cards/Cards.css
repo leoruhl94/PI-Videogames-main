@@ -1,6 +1,7 @@
-.cards-container {
+.cards {
+    grid-area: 1/4/7/13;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 1.5rem;
+    padding-right: 1.5rem;
 }

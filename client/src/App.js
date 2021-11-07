@@ -1,5 +1,5 @@
 import './App.css';
-import { CreateGame } from './containers/CreateGame/CreateGame';
+import { AddGame } from './containers/AddGame/AddGame';
 import { Home } from './containers/Home/Home';
 import { Landing } from './containers/Landing/Landing';
 import { Route, Switch } from 'react-router-dom';
@@ -15,7 +15,7 @@ function App() {
       <Switch>
         <Route path="/" exact> <Landing/> </Route>
         <Route path="/home" > <Header/> <Home/> </Route>
-        <Route path="/create" exact> <CreateGame/> </Route>
+        <Route path="/addGame" exact> <AddGame/> </Route>
         <Route path="/detail/:id" exact> <Header/> <GameDetail/> </Route>
         
       </Switch>

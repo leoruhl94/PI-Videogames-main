@@ -14,7 +14,7 @@ export const Navbar = () => {
     return(
         <nav className='nav'> 
             <NavLink to='/home' className='nav-links' onClick={handleOnClick}>Home</NavLink>
-            <NavLink to='/create' className='nav-links'>New-Game</NavLink>
+            <NavLink to='/addGame' className='nav-links'>Add Game</NavLink>
         </nav>
     )
 }

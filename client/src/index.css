@@ -1,3 +1,5 @@
+@import url("./assets/fonts/BrutalType-Medium/style.css");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,14 +11,21 @@ Html {
 
 body {
   margin: 0;
-  font-family: monospace, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+  font-family: "Roboto";
+  /* font-family:   monospace, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
-
+/* 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+.grid_container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0px;
 }
