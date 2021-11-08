@@ -44,3 +44,7 @@
 .border-error {
     border: 2px solid red;
 }
+.addGame-row{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,32 @@
+.option_item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* height: 20px; */
+    background-color: rgba(0, 0, 0, 0.24);
+    font-family: "Brutal Type";
+    font-size: 1.2rem;
+    padding: 0.2rem .4rem;
+    margin: .3rem .5rem;
+    border-radius: 1rem;
+}
+.option_item_text{
+margin-bottom: 3px;
+line-height: normal;
+}
+
+.option_item_button{
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
+    border: none;
+    margin-left: .4rem;
+    font-size: 1.4rem;
+    
+}
+.option_selected{
+
+} 
+.option_normal{
+
+}

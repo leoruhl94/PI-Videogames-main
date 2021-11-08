@@ -1,4 +1,5 @@
 
+import Icon from "../../assets/Icon/Icon";
 import "./OptionItem.css";
 
 export const OptionItem = ({
@@ -9,20 +10,24 @@ export const OptionItem = ({
 }) => {
 
   const handleOnClick = (e) => {
-        const { value , name } = e.target;
+        console.log(value, name)
         handler({id: Number(value), name , selected:!selected});
   };
-
+  // console.log(value, name)
   return (
-    <div className="option-item-list">
-        <span>{name}</span>
+    <div className="option_item">
+        <span className="option_item_text">{name}</span>
         <button
         type="button"
         name={name}
         value={value}
         onClick={handleOnClick}
-        className={ selected ? "option-selected" : "option-normal"}
-      >{ selected ? "X" : "+" }</button>
+        className={`option_item_button ${  selected ? "option_selected" : "option_normal"}`}
+      >{ 
+      selected ?  <Icon svg="xCircle" title="xCircle" />
+       : <Icon svg="plusCircle" title="plusCircle" />
+      }
+       </button>
     </div>
   );
 };

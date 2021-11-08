@@ -90,17 +90,17 @@ export const AddGame = () =>{
     const handleErrors = (errors) => {
         let handled = true;
         for (const key in errors) {
-            console.log(errors[key], "handleErrors")
+            // console.log(errors[key], "handleErrors")
             if (errors[key]) {
                 handled = false;
             }
         }
-        console.log("handled------>", handled)
+        // console.log("handled------>", handled)
         return handled
     }
 
-    console.log('game state', game)
-    console.log('Errors', error);
+    // console.log('game state', game)
+    // console.log('Errors', error);
     
     return (
         <div className="create-game">
@@ -164,7 +164,7 @@ export const AddGame = () =>{
                     />
                 </fieldset>
 
-                <fieldset className="addGame-block3">
+                <fieldset className="addGame-row">
                     <FormListOptions
                         title="Este es el titulo de Genres"
                         group="Genres:"
