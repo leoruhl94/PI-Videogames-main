@@ -1,61 +1,84 @@
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Icon from "../../assets/Icon/Icon";
 import { Loading } from "../../components/Loading/Loading";
-import './GameDetail.css'
+import { Header } from "../../components/Header/Header";
+import "./GameDetail.css";
 
 export const GameDetail = () => {
-    const [game, setGame] = useState(null)
-    let { id } = useParams();
-    useEffect(() => {
-        fetch(`http://127.0.0.1:3001/api/videogame/${id}`)
-        .then(res => res.json())
-        .then(game => {
-            setGame(game);
-        })
-        .catch(err => console.error(err))
-    }, [id])
+  const [game, setGame] = useState(null);
+  let { id } = useParams();
+  useEffect(() => {
+    fetch(`http://127.0.0.1:3001/api/videogame/${id}`)
+      .then((res) => res.json())
+      .then((game) => {
+        setGame(game);
+      })
+      .catch((err) => console.error(err));
+  }, [id]);
 
-    return (
-        <div>
+  return (
+    <div className="videogame_background">
+      <Header logo nav />
+      <div className="videogame_container">
+        {game ? (
+          <>
+            <img
+              src={game.image}
+              alt={`${game.name}`}
+              className="videogame_img"
+            />
 
-        <div className="videogame-detail">
-            {
-                game? 
-                <>  
-                    <img src={game.image} alt={`${game.name}`} />
-                    <h2>{game.name}</h2>
-                    <div className="videogame-description" dangerouslySetInnerHTML={{ __html: game.description }}>
+            <div className="videogame_info">
+              <h2 className="videogame_title">{game.name}</h2>
+              <div className="videogame_row">
+                <div className="videogame_rating">
+                  <span className="videogame_rating-icon">
+                    <Icon
+                      svg={game.rating > 2.5 ? "starSolid" : "starOutline"}
+                      title={game.rating > 2.5 ? "starSolid" : "starOutline"}
+                    />
+                  </span>
+                  <span className="videogame_rating-text">
+                    {game.rating} / 5
+                  </span>
+                </div>
+                <span className="videogame_released">
+                  {game.released.slice(0, 11)}
+                </span>
+              </div>
 
-                    </div>
-                    <span>
-                        {game.rating}
-                    </span>
-                    <span>
-                        {game.released.slice(0,11)}
-                    </span>
-                    
-                    <div className="videogame-tags">
-
-                        <div className="videogame-genres">
-                            <h3>Genres</h3>
-                            {game.genres.map(item => {
-                                return <span key={item}>{item}</span>
-                            })}
-                        </div>
-                        <div className="videogame-platforms">
-                            <h3>Platforms</h3>
-                            {game.platforms.map(item => {
-                                return <span key={item}>{item}</span>
-                            })}
-                        </div>
-                    </div>
-                </>
-                :
-                <Loading />
-            }
+              <div className="videogame_row">
+                <div className="videogame_list">
+                  <h3 className="videogame_subtitles">Genres</h3>
+                  <div className="videogame_tags">
+                    {game.genres.map((item) => {
+                      return <span key={item}>{item}</span>;
+                    })}
+                  </div>
+                </div>
+                <div className="videogame_list">
+                  <h3 className="videogame_subtitles">Platforms</h3>
+                  <div className="videogame_tags">
+                    {game.platforms.map((item) => {
+                      return <span key={item}>{item}</span>;
+                    })}
+                  </div>
+                </div>
+              </div>
+              <div className="videogame_description">
+                <h3 className="videogame_subtitles">Description</h3>
+                <p
+                  className="videogame_description_text"
+                  dangerouslySetInnerHTML={{ __html: game.description }}
+                ></p>
+              </div>
             </div>
+          </>
+        ) : (
+          <Loading />
+        )}
       </div>
-            
-    )
-}
+    </div>
+  );
+};

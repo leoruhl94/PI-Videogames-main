@@ -20,7 +20,7 @@ export const GameCard = (props) => {
               />
             </span>
             <span className="game-card_details__rating-text">
-              {rating} / 5{" "}
+              {rating} / 5
             </span>
           </div>
           <div className="game-card_details__genres">

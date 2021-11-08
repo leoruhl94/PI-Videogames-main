@@ -6,6 +6,7 @@ import { Pagination } from "../../components/Pagination/Pagination";
 import "./Home.css";
 import { Cards } from "../../components/Cards/Cards";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
+import { Header } from "../../components/Header/Header";
 
 export const Home = () => {
   let dispatch = useDispatch();
@@ -15,13 +16,11 @@ export const Home = () => {
   }, [dispatch]);
   return (
     <div className="home_background">
+      <Header nav logo />
       <section className="home">
         <SearchBar />
         <Filters />
-        <div className="home_games">
-          {/* <Filters/> */}
-          <Cards />
-        </div>
+        <Cards />
         <Pagination />
       </section>
     </div>

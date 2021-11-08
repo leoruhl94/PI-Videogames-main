@@ -1,113 +1,108 @@
 .game-card {
-    font-family: "Brutal Type";
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    width: 200px;
-    height: 250px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 450ms all;
-    /* -webkit-transform-origin: center ;
+  font-family: "Brutal Type";
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 250px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms all;
+  /* -webkit-transform-origin: center ;
             transform-origin: center ; */
 }
 
 .game-card:hover {
-    /* -webkit-transform: translate3d(-100px, -100px, 0); */
-    
-            transform: scale(1.2, 1.2);
-            z-index: 1;
-  }
+  /* -webkit-transform: translate3d(-100px, -100px, 0); */
 
-  .game-card:hover .game-card_details {
-    opacity: 1;
-  }
-  
-  .carousel-item__details--title {
-    color: white;
-    margin: 5px 0px 0px 0px;
-  }
+  transform: scale(1.2, 1.2);
+  z-index: 1;
+}
+
+.game-card:hover .game-card_details {
+  opacity: 1;
+}
+
+.carousel-item__details--title {
+  color: white;
+  margin: 5px 0px 0px 0px;
+}
 
 .game-card_img {
-    width: 200px;
-    height: 250px;
-    -o-object-fit: cover;
-       object-fit: cover;
+  width: 200px;
+  height: 250px;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
-.game-card_details{
-    align-items: flex-start;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-    font-size: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    left: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: 450ms opacity;
-    padding: 10px;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
- 
-  .game-card_details__title  {
-    color: white;
-    font-size: 1.6rem;
-    margin: 5px 0px 0px 0px;
-  }
-  
-  .game-card_details__rating{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: row;
-    margin: 0.5rem 0;
-  }
-  .game-card_details__rating-text{
-    color: white;
-    font-size: 1.1rem;
-    margin: 3px 0px;
-  }
-  .game-card_details__rating-icon{
-    color: goldenrod;
-    padding-left: 0.5rem;
-    font-size: 1.5rem;
-    padding-bottom: -10px;
-  }
-  .game-card_details__rating-icon2{
-    color: goldenrod;
-    padding-right: 0.5rem;
-    font-size: 1.5rem;
-    padding-bottom: -10px;
-  }
-  .game-card_details__genres{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-self: center;
-      align-content: center;
-      flex-wrap: wrap;
-      width: 100%;
-      }
-
-.game-card_details__genres-item{
-    padding-left: 0.5rem;
-    color: white;
-    font-size: 10px;
-    margin: 0.2rem .5rem;
-    padding: 0 .5rem;
-    border-radius: 10px;
+.game-card_details {
+  align-items: flex-start;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: 450ms opacity;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-  
+.game-card_details__title {
+  color: white;
+  font-size: 1.6rem;
+  margin: 5px 0px 0px 0px;
+}
 
+.game-card_details__rating {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  margin: 0.5rem 0;
+}
+.game-card_details__rating-text {
+  color: white;
+  font-size: 1.1rem;
+  margin: 3px 0px;
+}
+.game-card_details__rating-icon {
+  color: goldenrod;
+  padding-left: 0.5rem;
+  font-size: 1.5rem;
+  padding-bottom: -10px;
+}
+.game-card_details__rating-icon2 {
+  color: goldenrod;
+  padding-right: 0.5rem;
+  font-size: 1.5rem;
+  padding-bottom: -10px;
+}
+.game-card_details__genres {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-self: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
-  
-
-
-
+.game-card_details__genres-item {
+  padding-left: 0.5rem;
+  color: white;
+  font-size: 10px;
+  margin: 0.2rem 0.5rem;
+  padding: 0 0.5rem;
+  border-radius: 10px;
+}

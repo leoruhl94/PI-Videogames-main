@@ -1,19 +1,80 @@
-.videogame-detail{
-    background-color: lightblue;
-    margin: auto;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem;
-    font-size: 1.6rem;
-    font-family: monospace;
+.videogame_background {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-image: url("../../assets/images/background-4.jpg");
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.videogame_container {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  font-family: "Brutal Type";
+  padding: 2rem 10%;
+  margin: auto;
+  width: 100%;
+  backdrop-filter: blur(6px);
+  color: #dddddd;
+  font-size: 1.6rem;
+}
+.videogame_info {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 500px;
+  padding: 1.5rem;
 }
 
-.videogame-detail img{
-    max-width: 100%;
+.videogame_img {
+  width: 400px;
+  height: 500px;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
-.videogame-detail h2{
-    padding: 2.5rem 0;
+.videogame_title {
+  color: #fefefe;
+  font-size: 2.1rem;
+  margin: 1.5rem 0;
+}
+
+.videogame_released,
+.videogame_rating {
+  width: 50%;
+}
+.videogame_rating-icon {
+  color: goldenrod;
+  font-size: 1.8rem;
+  margin-right: 1rem;
+}
+
+.videogame_row {
+  display: flex;
+  flex-direction: row;
+}
+.videogame_list {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.videogame_tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.videogame_tags span {
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  margin: 0 0.4rem 0.3rem 0;
+}
+
+.videogame_description_text {
+  font-size: 1.4rem;
+}
+.videogame_subtitles {
+  font-family: "Roboto";
+  color: #fefefe;
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin: 1rem 0;
 }
