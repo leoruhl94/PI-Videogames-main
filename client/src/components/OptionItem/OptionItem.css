@@ -3,11 +3,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* height: 20px; */
+    height: fit-content;
     background-color: rgba(0, 0, 0, 0.24);
     font-family: "Brutal Type";
     font-size: 1.2rem;
-    padding: 0.2rem .4rem;
+    padding: .4rem;
+    padding-bottom: 0;
     margin: .3rem .5rem;
     border-radius: 1rem;
 }
@@ -29,4 +30,8 @@ line-height: normal;
 } 
 .option_normal{
 
+}
+.option_item:hover{
+    background-color: rgba(0, 0, 0, 0.767);
+    color: white;
 }

@@ -44,22 +44,6 @@ export const FormListOptions = ({
   return (
     <div className="form-list-options">
       <h3>{title}</h3>
-
-{/* ---------------------------------- */}
-      <div className={`selected_options ${error.error ? "border-error" : ""}`}>
-        {selectedItems?.map((item) => {
-          return (
-            <OptionItem
-              key={`${group}-${item.id}`}
-              name={item.name}
-              value={item.id}
-              handler={handleOnChange}
-              selected={true}
-            />
-          );
-        })}
-        {error.error ? <p>{error.msjError}</p> : ""}
-      </div>
 {/* ---------------------------------- */}
 <div className="dropdown">
         <button type="button" className="dropbtn">
@@ -87,7 +71,21 @@ export const FormListOptions = ({
       </div>
 
 
-
+{/* ---------------------------------- */}
+      <div className={`selected_options ${error.error ? "border-error" : ""}`}>
+        {selectedItems?.map((item) => {
+          return (
+            <OptionItem
+              key={`${group}-${item.id}`}
+              name={item.name}
+              value={item.id}
+              handler={handleOnChange}
+              selected={true}
+            />
+          );
+        })}
+        {error.error ? <p>{error.msjError}</p> : ""}
+      </div>
 
 {/* ---------------------------------- */}
     </div>

@@ -3,8 +3,8 @@
 }
 .selected_options{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: row; 
+  /* flex-wrap: wrap; */
 
   min-height: 10rem;
   background-color: bisque;
