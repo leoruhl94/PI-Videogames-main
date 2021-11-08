@@ -1,3 +1,5 @@
+import { ASC, MINOR } from "../constantes/filters";
+
 export const validateName = (value) => {
     return (!/[^A-Za-z\s\,]/.test(value) && value);
 }
@@ -22,6 +24,26 @@ export const getActualDate = () => {
   }
 
 
+export const sortArrayByNameOrRating = (array, key, order) => {
+    let newArray = [];
+    if( key !== "name" && key !== "rating" ) return newArray;
+    if( key === "name" ){
+       newArray = array.sort((a, b) =>
+       order === ASC 
+        ? a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        : b.name.toLowerCase().localeCompare(a.name.toLowerCase())
+      );
+    } else {
+        newArray = array.sort((a, b) => {
+            if (a.rating < b.rating)
+              return order === MINOR ? -1 : 1;
+            if (a.rating > b.rating)
+              return order === MINOR ? 1 : -1;
+            return 0;
+          });
+    }
+    return newArray;
+}
 
 
 

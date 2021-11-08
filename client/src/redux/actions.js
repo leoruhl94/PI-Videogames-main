@@ -1,5 +1,7 @@
 // const { REACT_APP_API_BASE_URL } = 'process.env';
 
+import { ASC, DESC, MAYOR, MINOR } from "../constantes/filters";
+
 export const GET_VIDEOGAMES =  'GET_VIDEOGAMES';
 export const GET_PLATFORMS =  'GET_PLATFORMS';
 export const GET_GENRES = 'GET_GENRES';
@@ -85,19 +87,17 @@ export const searchVideogames = (search) => {
      }
 }
 
-export const sortByName = (order) => {
+
+export const sortGames = (sort) => {
+    let by=""
+    if(sort === ASC || sort === DESC) by = "name"
+    if(sort === MINOR || sort === MAYOR) by = "rating"
     return {
-        type: SORT_BY_NAME,
-        payload: order,
+        type: SORT_GAMES,
+        payload: { sort, by}
     }
 }
 
-export const sortByRating = (order) => {
-    return {
-        type: SORT_BY_RATING,
-        payload: order,
-    }
-}
 
 export const filterGenres = (genre) => {
     return {
@@ -117,12 +117,7 @@ export const filterFrom = (from) => {
         payload: from,
     }
 }
-export const sortGames = (sort) => {
-    return {
-        type: SORT_GAMES,
-        payload: sort,
-    }
-}
+
 export const resetFrom = () => {
     return {
         type: RESET_FROM,

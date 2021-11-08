@@ -11,10 +11,11 @@ import {
   GET_GENRES,
   REMOVE_FILTER_GENRES,
   GET_PLATFORMS,
+  SORT_GAMES,
 } from "./actions";
 
 import { ASC, FROM_API, MINOR, ITEMS_PER_PAGE, FROM_ALL } from "../constantes/filters";
-
+import { sortArrayByNameOrRating } from "../functions/functions";
 
 const initialState = {
   videogames: [],
@@ -59,32 +60,12 @@ const reducer = (state = initialState, action) => {
         currentPage: 1,
       };
 
-    case SORT_BY_NAME:
-      let sortArrayByName = [...state.filteredGames];
-      sortArrayByName = sortArrayByName.sort((a, b) =>
-       action.payload === ASC 
-        ? a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-        : b.name.toLowerCase().localeCompare(a.name.toLowerCase())
-      );
+     case SORT_GAMES:
+      let orderedArray2 = sortArrayByNameOrRating([...state.filteredGames], action.payload.by , action.payload.sort)
       return {
         ...state,
-        filteredGames: sortArrayByName,
-        order: action.payload,
-      };
-
-    case SORT_BY_RATING:
-      let orderArrayByRating = [...state.filteredGames];
-      orderArrayByRating = orderArrayByRating.sort((a, b) => {
-        if (a.rating > b.rating)
-          return action.payload === MINOR ? -1 : 1;
-        if (a.rating < b.rating)
-          return action.payload === MINOR ? 1 : -1;
-        return 0;
-      });
-      return {
-        ...state,
-        filteredGames: orderArrayByRating,
-        order: action.payload,
+        filteredGames: [...orderedArray2],
+        order: action.payload.sort,
       };
 
 

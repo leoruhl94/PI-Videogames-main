@@ -17,6 +17,8 @@ export const GameDetail = () => {
     }, [id])
 
     return (
+        <div>
+
         <div className="videogame-detail">
             {
                 game? 
@@ -52,6 +54,7 @@ export const GameDetail = () => {
                 :
                 <Loading />
             }
+            </div>
       </div>
             
     )
