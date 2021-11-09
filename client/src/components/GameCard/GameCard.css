@@ -26,11 +26,6 @@
   opacity: 1;
 }
 
-.carousel-item__details--title {
-  color: white;
-  margin: 5px 0px 0px 0px;
-}
-
 .game-card_img {
   width: 200px;
   height: 250px;

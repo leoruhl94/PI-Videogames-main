@@ -32,13 +32,7 @@ export const AddGame = () => {
 
   const [allInputsOk, setAllInputsOk] = useState(false);
   const [game, setGame] = useState({
-    // name: "",
-    // description: "",
-    // rating: "",
-    // release: "",
-    // image: "",
-    // platforms:[],
-    // genres:[],
+
   });
   const [error, setError] = useState({
     name: true,
@@ -122,7 +116,7 @@ export const AddGame = () => {
                   handler={handleOnChange}
                   msjError="Required"
                   validation={validateRating}
-                  step="0.01"
+                  step="0.05"
                   minValue="0"
                   maxValue="5"
                 />
@@ -150,8 +144,8 @@ export const AddGame = () => {
                 handler={handleOnChange}
                 msjError="Required"
                 validation={validateText}
-                rows="4"
-                cols="30"
+                rows="10"
+                cols="100"
               />
             </div>
 

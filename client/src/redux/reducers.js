@@ -25,6 +25,7 @@ const initialState = {
   currentPage: 1,
   totalPages: 0,
   gamesPerPage: [],
+  searchMsj:"",
 };
 
 const reducer = (state = initialState, action) => {
@@ -50,9 +51,15 @@ const reducer = (state = initialState, action) => {
       };
 
     case SEARCH_VIDEOGAMES:
+      let search = [...action.payload], msj="";
+      if(action.payload[0].error){
+        search=[];
+        msj=action.payload[0].msj
+      }
       return {
         ...state,
-        filteredGames: action.payload,
+        filteredGames: [...search],
+        searchMsj: msj,
         totalPages: Math.ceil(action.payload.length / ITEMS_PER_PAGE),
         currentPage: 1,
       };

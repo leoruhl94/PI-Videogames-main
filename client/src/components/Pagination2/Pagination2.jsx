@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Icon from "../../assets/Icon/Icon";
 
 import { changePage } from "../../redux/actions";
-import './Pagination.css'
+import './Pagination2.css'
 
 
-export const Pagination = () => {
+export const Pagination2 = () => {
   const [totalPages, currentPage ]= useSelector((state) => [state.totalPages, state.currentPage]);
   const dispatch = useDispatch();
   let pageNumbers = [];

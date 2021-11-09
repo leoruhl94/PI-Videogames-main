@@ -1,8 +1,5 @@
 import "./Filters.css";
-// import { useDispatch } from "react-redux";
 import { filterFrom, filterGenres, getVideogames, sortGames } from "../../redux/actions";
-import { WidgetFilterFrom } from "../WidgetFilterFrom/WidgetFilterFrom";
-import { SelectedFilter } from "../SelectedFilters/SelectedFilters";
 import { WidgetFilterGenres } from "../WidgetFilterGenres/WidgetFilterGenres";
 import { ButtonDispatch } from "../ButtonDispatch/ButtonDispatch";
 import { ASC, DESC, FROM_ALL, FROM_API, FROM_DB, MAYOR, MINOR } from "../../constantes/filters";
@@ -76,7 +73,6 @@ export const Filters = () => {
      
    </div>
 
-      {/* <WidgetFilterFrom /> */}
       <WidgetFilterGenres />
 
     </section>
