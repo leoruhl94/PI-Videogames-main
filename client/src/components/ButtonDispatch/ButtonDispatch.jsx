@@ -2,26 +2,42 @@ import "./ButtonDispatch.css";
 import { useDispatch } from "react-redux";
 import Icon from "../../assets/Icon/Icon";
 
-
-export const ButtonDispatch = ({icon, text, name, value, action, handler, classIcon }) => {
-
+export const ButtonDispatch = ({
+  active,
+  icon,
+  text,
+  name,
+  value,
+  action,
+  handler,
+  classIcon,
+}) => {
   let dispatch = useDispatch();
-    // console.log("icon",icon, "name", name, "value", value)
-
-
+console.log(icon)
   const handleOnClick = (e) => {
-    dispatch(action(value));
+    // handler && handler(value);
+    // action && dispatch(action(value));
   };
 
   return (
-    <button className="button_distpach" type="button" value={value} name={name} onClick={handleOnClick}>
+    <button
+      key={value}
+      className={`button_distpach ${active && "active"}`}
+      type="button"
+      value={value}
+      name={name}
+      onClick={handleOnClick}
+    >
       {icon ? (
         <span className={classIcon || "button_distpach_icon"}>
           <Icon svg={icon} title={icon} />
         </span>
       ) : (
-        { text }
-      )}
+        <span>
+          { text }
+        </span>
+        )}
+        
     </button>
   );
 };

@@ -1,13 +1,20 @@
 import "./Filters.css";
 // import { useDispatch } from "react-redux";
-import { getVideogames, sortGames } from "../../redux/actions";
+import { filterFrom, filterGenres, getVideogames, sortGames } from "../../redux/actions";
 import { WidgetFilterFrom } from "../WidgetFilterFrom/WidgetFilterFrom";
 import { SelectedFilter } from "../SelectedFilters/SelectedFilters";
 import { WidgetFilterGenres } from "../WidgetFilterGenres/WidgetFilterGenres";
 import { ButtonDispatch } from "../ButtonDispatch/ButtonDispatch";
-import { ASC, DESC, MAYOR, MINOR } from "../../constantes/filters";
+import { ASC, DESC, FROM_ALL, FROM_API, FROM_DB, MAYOR, MINOR } from "../../constantes/filters";
+import { useDispatch } from "react-redux";
 
 export const Filters = () => {
+  let dispatch = useDispatch();
+
+  const handlerFrom = (value) => {
+    // dispatch(filterGenres())
+    // dispatch(filterFrom(value))
+  }
 
   return (
     <section className="filters">
@@ -41,8 +48,28 @@ export const Filters = () => {
         name={MINOR}
         value={MINOR}
         action={sortGames}
-        active
       />
+
+      <ButtonDispatch
+        text="ALL"
+        name={FROM_ALL}
+        value={FROM_ALL}
+        action={handlerFrom}
+        active
+        />
+      <ButtonDispatch
+        text="DB"
+        name={FROM_DB}
+        value={FROM_DB}
+        handler={handlerFrom}
+        />
+      <ButtonDispatch
+        text="API"
+        name={FROM_API}
+        value={FROM_API}
+        handler={handlerFrom}
+      />
+   
 
       <WidgetFilterFrom />
       <WidgetFilterGenres />

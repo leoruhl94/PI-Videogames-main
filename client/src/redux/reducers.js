@@ -67,31 +67,31 @@ const reducer = (state = initialState, action) => {
 
 
     case FILTER_GENRES:
-      let allGames2Filtered = [...state.videogames];
-      let filters2= action.payload?[...state.filters, action.payload]:[...state.filters];
-      console.log(filters2, "<-AF", action.payload)
-      filters2.forEach((e)=>{
-        allGames2Filtered = allGames2Filtered.filter(item => item.genres.includes(e))
+      let allGamesFilteredAdd = [...state.videogames];
+      let filtersAdd= action.payload?[...state.filters, action.payload]:[...state.filters];
+      
+      filtersAdd.forEach((x)=>{
+        allGamesFilteredAdd = allGamesFilteredAdd.filter(item => item.genres.includes(x))
       })
 
       return {
         ...state,
-        filteredGames: [...allGames2Filtered],
-        filters: [...filters2],
+        filteredGames: [...allGamesFilteredAdd],
+        filters: [...filtersAdd],
       };
 
     case REMOVE_FILTER_GENRES:
-      let allGames3Filtered = [...state.videogames];
-      let filters3 = state.filters.filter(item => item !== action.payload);
-      console.log(filters3, "<-RF", action.payload)
-      filters3.forEach((e)=>{
-        allGames3Filtered = allGames3Filtered.filter(item => item.genres.includes(e))
+      let allGamesFilteredRm = [...state.videogames];
+      let filtersRm = state.filters.filter(item => item !== action.payload);
+ 
+      filtersRm.forEach((x)=>{
+        allGamesFilteredRm = allGamesFilteredRm.filter(item => item.genres.includes(x))
       })
 
       return {
         ...state,
-        filteredGames: [...allGames3Filtered],
-        filters: [...filters3],
+        filteredGames: [...allGamesFilteredRm],
+        filters: [...filtersRm],
       };
 
     case FILTER_FROM:
@@ -104,7 +104,6 @@ const reducer = (state = initialState, action) => {
           : allGamesFiltered?.filter(item => item.createdInDb)
           )
       }
-      console.log('PL>', action.payload, allGamesFiltered)
       return {
         ...state,
         filterFrom: action.payload,
