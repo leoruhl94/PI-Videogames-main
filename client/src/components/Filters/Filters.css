@@ -7,8 +7,14 @@
     font-family: "Roboto";
     width: 100%;
     height: fit-content;
-    
 }
+.filters_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 40%;
+}
+
 .iconito{
     transform: rotateY(180deg);  
 }

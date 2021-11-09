@@ -67,13 +67,14 @@ export const searchVideogames = (search) => {
     fetch(`http://127.0.0.1:3001/api/videogames?name=${search}`)
       .then((res) => res.json())
       .then((videogames) => {
+        console.log(videogames);
         dispatch({
           type: SEARCH_VIDEOGAMES,
           payload: videogames,
         });
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   };
 };
@@ -89,6 +90,7 @@ export const sortGames = (sort) => {
 };
 
 export const filterGenres = (genre) => {
+  console.log("genres")
   return {
     type: FILTER_GENRES,
     payload: genre,
@@ -101,6 +103,7 @@ export const removeFilterGenres = (genre) => {
   };
 };
 export const filterFrom = (from) => {
+  console.log("FRom")
   return {
     type: FILTER_FROM,
     payload: from,

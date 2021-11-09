@@ -45,7 +45,7 @@ router.get('/', (req, res, next) => {
                 return 0;
             } )
             gamesFiltered.length ? res.json(gamesFiltered.slice(0,15))
-            : res.status(404).json([])
+            : res.status(200).json([{error: true, msj:`No se encontraron resulados para la busqueda ${name}`}])
         })
         .catch((error) => {
             next(error);

@@ -12,12 +12,16 @@ export const Filters = () => {
   let dispatch = useDispatch();
 
   const handlerFrom = (value) => {
-    // dispatch(filterGenres())
-    // dispatch(filterFrom(value))
+    console.log(value, "Handler From")
+    dispatch(filterGenres())
+    dispatch(filterFrom(value))
   }
 
   return (
     <section className="filters">
+   
+   <div className="filters_buttons">
+   
       <ButtonDispatch
         icon="refresh"
         name={"reset"}
@@ -54,7 +58,7 @@ export const Filters = () => {
         text="ALL"
         name={FROM_ALL}
         value={FROM_ALL}
-        action={handlerFrom}
+        handler={handlerFrom}
         active
         />
       <ButtonDispatch
@@ -69,9 +73,10 @@ export const Filters = () => {
         value={FROM_API}
         handler={handlerFrom}
       />
-   
+     
+   </div>
 
-      <WidgetFilterFrom />
+      {/* <WidgetFilterFrom /> */}
       <WidgetFilterGenres />
 
     </section>
