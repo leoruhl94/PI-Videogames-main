@@ -10,7 +10,8 @@ export const OptionItem = ({
 }) => {
 
   const handleOnClick = (e) => {
-        handler({id: Number(value), name , selected:!selected});
+    console.log("___==__", value, name)
+    handler({id: Number(value), name , selected:!selected});
   };
   return (
     <div className={`option_item ${  selected ? "option_selected" : "option_normal"}`}>

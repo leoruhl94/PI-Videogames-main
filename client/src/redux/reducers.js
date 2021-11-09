@@ -113,11 +113,11 @@ const reducer = (state = initialState, action) => {
         filterFrom: action.payload,
         filteredGames: [...allGamesFiltered]
       };
-    case RESET_FROM:
-      return {
-        ...state,
-        filteredGames: state.preFilter,
-      };
+    // case RESET_FROM:
+    //   return {
+    //     ...state,
+    //     filteredGames: state.preFilter,
+    //   };
 
     case CHANGE_PAGE:
       return {
