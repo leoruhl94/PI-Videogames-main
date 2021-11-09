@@ -44,9 +44,8 @@ router.get('/', (req, res, next) => {
                 if(a.name.length > b.name.length) return 1;
                 return 0;
             } )
-
-            res.json(gamesFiltered.slice(0,15))
-            //res.json(response)
+            gamesFiltered.length ? res.json(gamesFiltered.slice(0,15))
+            : res.status(404).json([])
         })
         .catch((error) => {
             next(error);

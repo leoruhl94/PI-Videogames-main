@@ -7,7 +7,7 @@ export const FormListOptions = ({
   options,
   handler,
   title,
-  group,
+  dropdown,
   validation,
   name,
   msjError,
@@ -20,6 +20,7 @@ export const FormListOptions = ({
     setItems(options);
     setSelectedItems([]);
   }, [options]);
+
 
   const handleOnChange = (value) => {
     let newItems = value.selected
@@ -47,17 +48,16 @@ export const FormListOptions = ({
 {/* ---------------------------------- */}
 <div className="dropdown">
         <button type="button" className="dropbtn">
-          {" "}
-          {group}
-          <span name="span" value="span" className="dropbtn_icon">
-            <Icon svg="refresh" title="refresh" name="span" value="span" />
+          {dropdown}
+          <span className="dropbtn_icon">
+            <Icon svg="arrowDown" title="arrowDown" />
           </span>
         </button>
 
         <div className="dropdown-content">
           {items?.map((item) => {
             return (
-              <div key={`${group}-${item.name}`} className="dropdown-item">
+              <div key={`id${item.id}-${item.name}`} className="dropdown-item">
                 <OptionItem
                   name={item.name}
                   value={item.id}
@@ -70,13 +70,12 @@ export const FormListOptions = ({
         </div>
       </div>
 
-
 {/* ---------------------------------- */}
       <div className={`selected_options ${error.error ? "border-error" : ""}`}>
         {selectedItems?.map((item) => {
           return (
             <OptionItem
-              key={`${group}-${item.id}`}
+              key={`id${item.id}-${item.name}`}
               name={item.name}
               value={item.id}
               handler={handleOnChange}
@@ -88,6 +87,7 @@ export const FormListOptions = ({
       </div>
 
 {/* ---------------------------------- */}
+   
     </div>
   );
 };

@@ -1,4 +1,23 @@
-
 .input-text-component {
-
+  display: flex;
+  flex-direction: column;
 }
+.input-text-component label {
+margin: 0.5rem 0;
+}
+.input-text-component input{
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    color: white;
+    font-size: 14px;
+    height: 30px;
+    outline: none;
+    padding: 0px 20px;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+  
+  ::placeholder {
+    color: white;
+  }

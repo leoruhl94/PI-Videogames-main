@@ -4,8 +4,7 @@
 .selected_options{
   display: flex;
   flex-direction: row; 
-  /* flex-wrap: wrap; */
-
+  flex-wrap: wrap;
   min-height: 10rem;
   background-color: bisque;
   border: 1px solid brown;
@@ -25,10 +24,9 @@
   border: none;
   cursor: pointer;
   padding: 0.2rem 0.5rem;
-  /* border-radius: 0.8rem; */
+  border-radius: 0.5rem;
   margin: 0.5rem ;
 }
-
 
 .dropdown-content {
   display: none;
@@ -39,23 +37,17 @@
   overflow-y: scroll;
 }
 
-/* Links inside the dropdown */
 .dropdown-item {
   color: black;
   text-decoration: none;
   display: block;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-item:hover{background-color: #f1f1f1}
-
-/* Show the dropdown menu on hover */
-/* .dropdown:focus .dropdown-content,  */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
+
 .dropdown:hover .dropbtn {
   background-color: #0000009f;
 }

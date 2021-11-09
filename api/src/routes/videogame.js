@@ -6,9 +6,6 @@ const axios = require("axios");
 const { validateText, validateNumber, validateArray, validateUrl, validateDate} = require("../controllers/validations");
 
 
-
-//Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
-//Crea un videojuego en la base de datos
 router.post("/", async (req, res, next) => {
   const { name, description, image, rating, released, platforms, genres } = req.body;
   let error = [];
@@ -42,9 +39,6 @@ router.post("/", async (req, res, next) => {
 });
  
 
-//Obtener el detalle de un videojuego en particular
-//Debe traer solo los datos pedidos en la ruta de detalle de videojuego
-//Incluir los géneros asociados
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
   if (typeof id === "string" && id.length > 8) {
@@ -54,7 +48,8 @@ router.get("/:id", async (req, res, next) => {
         include: [{model : Genres, attributes:['name'], through: {attributes: []}},
         {model : Platforms, attributes:['name'], through: {attributes: []} }],
       });
-      res.json({
+      videogame? 
+       res.json({
         name: videogame.name,
         description: videogame.description,
         released: videogame.released,
@@ -62,7 +57,8 @@ router.get("/:id", async (req, res, next) => {
         image: videogame.image,
         platforms: videogame.platforms.map((item) => item.name),
         genres: videogame.genres.map((item) => item.name),
-      });
+      })
+      : res.status(404).json({msj: "No se encontro informacion para este videojuego"})
     } catch (error) {
       next(error);
     }
@@ -90,7 +86,7 @@ router.get("/:id", async (req, res, next) => {
         genres: genres.map((item) => item.name),
       });
     } catch (error) {
-      next(error);
+       next(error);
     }
   }
 });

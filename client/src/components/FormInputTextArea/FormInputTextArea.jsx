@@ -26,7 +26,9 @@ export const FormInputTextArea = ({
 
   return (
     <div className="input-textarea-component">
-      <label htmlFor={name}> {label} </label>
+      <label htmlFor={name}> 
+        {label} {state.error && <span className="text_error">{state.msjError}</span> }
+      </label>
       <textarea
         id={`id-${name}`}
         rows={rows}
@@ -34,9 +36,8 @@ export const FormInputTextArea = ({
         name={name}
         placeholder={placeholder}
         onChange={handleOnChange}
-        className={state.error ? "border-error" : ""}
+        className={state.error ? "border_error" : "border_ok"}
       ></textarea>
-      {state.error ? <p>{state.msjError}</p> : ""}
     </div>
   );
 };

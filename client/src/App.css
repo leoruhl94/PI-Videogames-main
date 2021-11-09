@@ -37,10 +37,13 @@
   }
 } */
 
-.bad_input{
-  border: 1px solid red;
+.border_error {
+  border: 2px solid rgb(255, 47, 89);
 }
-.good_input{
-  border: 1px solid greenyellow;
+.border_ok {
+  border: 2px solid #05dbf2;
 }
-
+.text_error {
+  color: rgb(255, 47, 89);
+  padding-left: 1rem;
+}
