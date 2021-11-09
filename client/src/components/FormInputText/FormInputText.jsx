@@ -20,15 +20,16 @@ export const FormInputText = ({
       setState({ value, error: true, msjError });
       handler({ name, value, error: true });
     }
-    console.log("LOG___HAY ERROR",state.error)
+    console.log("LOG___HAY ERROR", state.error);
   };
-  
+
   return (
-    <div className="input-text-component" > 
-      <label htmlFor={name}> 
-      {label}  {state.error && <span className="text_error">{state.msjError}</span> }
+    <div className="input-text-component">
+      <label htmlFor={name}>
+        {label}{" "}
+        {state.error && <span className="text_error">{state.msjError}</span>}
       </label>
-      
+
       <input
         id={`id-${name}`}
         type="text"
@@ -36,10 +37,9 @@ export const FormInputText = ({
         placeholder={placeholder}
         value={state.value}
         onChange={handleOnChange}
-        className={state.error ? "border_error" : "border_ok" }
+        className={state.error ? "border_error" : "border_ok"}
         autoComplete="off"
       />
-      
     </div>
   );
 };

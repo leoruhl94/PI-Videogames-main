@@ -1,61 +1,92 @@
-.addGame_background{
-    background-image: url("../../assets/images/background_5.jpg");
-    background-size: 100% 100vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-   
-    
+.addGame_background {
+  background-image: url("../../assets/images/background_5.jpg");
+  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-.addGame{
-    display: flex;
-    justify-content: center;
-    font-family: "Brutal Type";
-    width: 100%;
-    backdrop-filter: blur(6px);
-    color: #dddddd;
-    font-size: 1.6rem;
-    min-height: 100vh; 
-
+.addGame {
+  display: flex;
+  justify-content: center;
+  font-family: "Brutal Type";
+  width: 100%;
+  backdrop-filter: blur(6px);
+  color: #dddddd;
+  font-size: 1.6rem;
+  min-height: 100vh;
 }
-.addGame_form{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    margin: 2rem;
-    padding: 2rem 3rem;
-    background-color: rgba(0, 0, 0, 0.226);
+.addGame_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  padding: 2rem 3rem;
+  background-color: rgba(0, 0, 0, 0.226);
+  max-width: 650px;
 }
-.flex_row{
-    display: flex;
-    flex-direction: row;
+.flex_row {
+  display: flex;
+  flex-direction: row;
 }
-.flex_column{
-    display: flex;
-    flex-direction: column;
+.flex_column {
+  display: flex;
+  flex-direction: column;
 }
 
-.addGame_title{
-    margin-bottom: 2rem;
-    color: #fff;
-    font-family: "Roboto"
+.addGame_title {
+  margin-bottom: 2rem;
+  color: #fff;
+  font-family: "Roboto";
 }
-.addGame_inputs{
-padding-right: 2rem;
+.addGame_inputs {
+  padding-right: 2rem;
 }
 
 .addGame_preview_image {
-    width: 25rem;
-    height: 30rem;
-   border-radius: 1.5rem;
+  width: 25rem;
+  height: 30rem;
+  border-radius: 1.5rem;
+  margin-top: 3.3rem;
 }
-.addGame_preview_image img{
-    width: 25rem;
-    height: 30rem;
-    -o-object-fit: cover;
-    object-fit: cover;
+.addGame_preview_image img {
+  width: 25rem;
+  height: 30rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 1.5rem;
 }
 
-.addGame_filters{
-background-color: brown;
-width: 100%;
+.addGame_rating_date {
+  width: 100%;
+  justify-content: space-between;
+}
+.addGame_filters {
+  justify-content: space-between;
+  width: 100%;
+}
+.addgames_btn_send {
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  height: 50px;
+  margin: 10px 0;
+  border: 2px solid #05dbf2;
+}
+.addgames_btn_send:hover {
+  font-size: 1.8rem;
+}
+
+.addgames_btn_disabled {
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 25px;
+  color: #858585;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  height: 50px;
+  margin: 10px 0;
+  border: 2px solid #858585;
 }

@@ -10,7 +10,7 @@ export const FormInputNumber = ({
   msjError,
   step,
   maxValue,
-  minValue
+  minValue,
 }) => {
   const [state, setState] = useState({});
 
@@ -27,7 +27,10 @@ export const FormInputNumber = ({
 
   return (
     <div className="input-number-component">
-      <label htmlFor={name}> {label} </label>
+      <label htmlFor={name}>
+        {label}
+        {state.error && <span className="text_error">{state.msjError}</span>}
+      </label>
       <input
         id={`id-${name}`}
         type="number"
@@ -35,11 +38,10 @@ export const FormInputNumber = ({
         placeholder={placeholder}
         step={step}
         onChange={handleOnChange}
-        className={state.error ? "border-error" : ""}
+        className={state.error ? "border_error" : "border_ok"}
         min={minValue}
         max={maxValue}
       />
-      {state.error ? <p>{state.msjError}</p> : ""}
     </div>
   );
 };

@@ -28,17 +28,20 @@ export const FormInputDate = ({
 
   return (
     <div className="input-date-component">
-      <label htmlFor={name}> {label} </label>
+      <label htmlFor={name}> 
+      {label} {state.error && <span className="text_error">{state.msjError}</span> }
+      </label>
+
       <input
         id={`id-${name}`}
         type="date"
         name={name}
         onChange={handleOnChange}
-        className={state.error ? "border-error" : ""}
+        className={state.error ? "border_error" : "border_ok"}
         min={min}
         max={max}
       />
-      {state.error ? <p>{state.msjError}</p> : ""}
-    </div>
+      
+     </div>
   );
 };

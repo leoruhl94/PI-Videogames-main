@@ -111,16 +111,16 @@ export const AddGame = () => {
                 name="name"
                 placeholder="Assassin's Creed"
                 handler={handleOnChange}
-                msjError="Debes ingresar un Nombre"
+                msjError="Required"
                 validation={validateText}
               />
-              <div className="flex_row">
+              <div className="flex_row addGame_rating_date">
                 <FormInputNumber
                   label="Rating: "
                   name="rating"
-                  placeholder="4.65"
+                  placeholder="0 - 5"
                   handler={handleOnChange}
-                  msjError="Debes ingresar un numero entre 0 y 5"
+                  msjError="Required"
                   validation={validateRating}
                   step="0.01"
                   minValue="0"
@@ -130,7 +130,7 @@ export const AddGame = () => {
                   label="Date: "
                   name="released"
                   handler={handleOnChange}
-                  msjError="Debes seleccionar una Fecha"
+                  msjError="Required"
                   validation={validateText}
                   max={getActualDate()}
                 />
@@ -148,7 +148,7 @@ export const AddGame = () => {
                 name="description"
                 placeholder="Añande una descripcion aqui..."
                 handler={handleOnChange}
-                msjError="Debes ingresar una descripcion"
+                msjError="Required"
                 validation={validateText}
                 rows="4"
                 cols="30"
@@ -165,7 +165,7 @@ export const AddGame = () => {
               dropdown="Genres"
               name="genres"
               options={genres}
-              msjError="selecciona al menos una opcion"
+              msjError="required options"
               handler={handleOnChange}
               validation={validateOptions}
             />
@@ -173,20 +173,29 @@ export const AddGame = () => {
               dropdown="Platforms"
               name="platforms"
               options={platforms}
-              msjError="selecciona al menos una opcion"
+              msjError="required options"
               handler={handleOnChange}
               validation={validateOptions}
             />
           </div>
 
-          <fieldset className="addGame-block4">
-            <button type="submit" value="Send" disabled={!handleErrors(error)}>
+          <div className="flex_row addgames_btn">
+            <button
+              className={
+                !handleErrors(error)
+                  ? "addgames_btn_disabled"
+                  : "addgames_btn_send"
+              }
+              type="submit"
+              value="Send"
+              disabled={!handleErrors(error)}
+            >
               Add Game
             </button>
-            <button type="button" value="cancel">
+            {/* <button type="button" value="cancel">
               Cancel
-            </button>
-          </fieldset>
+            </button> */}
+          </div>
         </form>
       </div>
     </div>

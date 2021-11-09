@@ -21,7 +21,6 @@ export const FormListOptions = ({
     setSelectedItems([]);
   }, [options]);
 
-
   const handleOnChange = (value) => {
     let newItems = value.selected
       ? items.filter((e) => e.id !== value.id)
@@ -45,15 +44,15 @@ export const FormListOptions = ({
   return (
     <div className="form-list-options">
       <h3>{title}</h3>
-{/* ---------------------------------- */}
-<div className="dropdown">
+
+      <div className="dropdown">
         <button type="button" className="dropbtn">
-          {dropdown}
+          <span className="dropbtn_text">{dropdown}</span>
           <span className="dropbtn_icon">
             <Icon svg="arrowDown" title="arrowDown" />
           </span>
         </button>
-
+        {error.error && <span className="text_error">{error.msjError}</span> }
         <div className="dropdown-content">
           {items?.map((item) => {
             return (
@@ -70,8 +69,7 @@ export const FormListOptions = ({
         </div>
       </div>
 
-{/* ---------------------------------- */}
-      <div className={`selected_options ${error.error ? "border-error" : ""}`}>
+      <div className={`selected_options ${error.error ? "border_error" : "border_ok"}`}>
         {selectedItems?.map((item) => {
           return (
             <OptionItem
@@ -83,11 +81,8 @@ export const FormListOptions = ({
             />
           );
         })}
-        {error.error ? <p>{error.msjError}</p> : ""}
       </div>
 
-{/* ---------------------------------- */}
-   
     </div>
   );
 };
