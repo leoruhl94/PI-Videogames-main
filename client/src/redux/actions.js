@@ -8,11 +8,8 @@ export const GET_GENRES = "GET_GENRES";
 export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
 export const GET_CURRENT_PAGE = "GET_CURRENT_PAGE";
 export const CHANGE_PAGE = "CHANGE_PAGE";
-export const SORT_BY_RATING = "SORT_BY_RATING";
-export const SORT_BY_NAME = "SORT_BY_NAME";
 export const SORT_GAMES = "SORT_GAMES";
 export const FILTER_FROM = "FILTER_FROM";
-export const RESET_FROM = "RESET_FROM";
 export const FILTER_GENRES = "FILTER_GENRES";
 export const REMOVE_FILTER_GENRES = "REMOVE_FILTER_GENRES";
 
@@ -35,7 +32,6 @@ export const getGenres = () => {
 
 export const getPlatforms = () => {
   return function (dispatch) {
-    // fetch(`${REACT_APP_API_BASE_URL}/videogames`)
     fetch(`http://127.0.0.1:3001/api/platforms`)
       .then((res) => res.json())
       .then((platforms) => {
@@ -111,12 +107,6 @@ export const filterFrom = (from) => {
   };
 };
 
-export const resetFrom = () => {
-  return {
-    type: RESET_FROM,
-    payload: "",
-  };
-};
 
 export const changePage = (page) => {
   return {

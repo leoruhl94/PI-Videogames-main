@@ -12,15 +12,13 @@ export const Cards = () => {
     let dispatch = useDispatch();
     useEffect( () => {
         dispatch(getCurrentGames())
-    }, [all,dispatch])
-    useEffect( () => {
-        dispatch(getCurrentGames())
-    }, [currentPage, dispatch])
-    
+    }, [all, currentPage ,dispatch])
+    // console.log(games)
+    // console.log(all)
     return (
         <div className='cards'>
             {
-                games?.length ?
+                all.length ?
                 games?.map( item => {
                     return (
                         

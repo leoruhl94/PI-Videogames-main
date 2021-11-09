@@ -1,0 +1,14 @@
+.filter_bar_genres{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: 0 2rem;
+}
+.filter_genres_selected{
+    width: 70%;
+    margin-left: 1rem;
+    overflow-x:auto;
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: nowrap;
+ }

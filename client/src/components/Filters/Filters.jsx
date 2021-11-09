@@ -10,7 +10,7 @@ import { ASC, DESC, MAYOR, MINOR } from "../../constantes/filters";
 export const Filters = () => {
 
   return (
-    <aside className="filters">
+    <section className="filters">
       <ButtonDispatch
         icon="refresh"
         name={"reset"}
@@ -44,11 +44,9 @@ export const Filters = () => {
         active
       />
 
-      {/* <SelectedFilter /> */}
-
       <WidgetFilterFrom />
       <WidgetFilterGenres />
 
-    </aside>
+    </section>
   );
 };

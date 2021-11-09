@@ -1,11 +1,13 @@
 .filters{
     display: flex;
     flex-direction: row;
-    padding: 2rem 1.5rem;
+    padding: 1rem 1.5rem;
     background-color: #011526aa;
     color:rgba(255, 255, 255, 0.74);
-    font-family: "Brutal Type";
-
+    font-family: "Roboto";
+    width: 100%;
+    height: fit-content;
+    
 }
 .iconito{
     transform: rotateY(180deg);  

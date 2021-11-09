@@ -1,10 +1,7 @@
 import {
   GET_VIDEOGAMES,
   SEARCH_VIDEOGAMES,
-  SORT_BY_NAME,
-  SORT_BY_RATING,
   FILTER_FROM,
-  RESET_FROM,
   FILTER_GENRES,
   CHANGE_PAGE,
   GET_CURRENT_PAGE,
@@ -113,11 +110,6 @@ const reducer = (state = initialState, action) => {
         filterFrom: action.payload,
         filteredGames: [...allGamesFiltered]
       };
-    // case RESET_FROM:
-    //   return {
-    //     ...state,
-    //     filteredGames: state.preFilter,
-    //   };
 
     case CHANGE_PAGE:
       return {
