@@ -7,11 +7,9 @@ import { SearchNotFound } from "../SearchNotFound/SearchNotFound";
 import "./Cards.css";
 
 export const Cards = () => {
-  const games = useSelector((state) => state.gamesPerPage);
-  const searchMsj = useSelector((state) => state.searchMsj);
+  const [games, currentPage] = useSelector((state) => [state.gamesPerPage, state.currentPage]);
+  const [searchMsj, filterNoMatch]= useSelector((state) => [state.searchMsj, state.filterNoMatch]);
   const all = useSelector((state) => state.filteredGames);
-  const videogames = useSelector((state) => state.allVideogames);
-  const currentPage = useSelector((state) => state.currentPage);
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrentGames()); 
@@ -39,7 +37,7 @@ export const Cards = () => {
           ) : (
             <>
             {
-              all  ? <Loading />   
+              filterNoMatch  ? <SearchNotFound name={"No Results"} />    
               :<Loading /> 
             }
             </>

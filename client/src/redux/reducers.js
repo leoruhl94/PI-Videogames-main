@@ -33,6 +33,7 @@ const initialState = {
   totalPages: 0,
   gamesPerPage: [],
   searchMsj: "",
+  filterNoMatch: false,
 };
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -95,6 +96,7 @@ const reducer = (state = initialState, {type, payload}) => {
       let filteredArray = [...state.videogames];
       let filters = [...state.filters];
       let from = state.filterFrom;
+      let filterNoMatch
       if (name === GENRES) {
         filteredArray = [...state.videogames];
         filters = active
@@ -114,6 +116,7 @@ const reducer = (state = initialState, {type, payload}) => {
             ? filteredArray?.filter((item) => !item.createdInDb)
             : filteredArray?.filter((item) => item.createdInDb);
       }
+      filterNoMatch = filteredArray.length? true : true;
       return {
         ...state,
         filteredGames: [...filteredArray],
@@ -121,6 +124,7 @@ const reducer = (state = initialState, {type, payload}) => {
         filters: [...filters],
         order: ASC,
         currentPage: 1,
+        filterNoMatch: filterNoMatch,
       };
 
     case RESET_FILTERS:
