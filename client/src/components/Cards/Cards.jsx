@@ -10,6 +10,7 @@ export const Cards = () => {
   const games = useSelector((state) => state.gamesPerPage);
   const searchMsj = useSelector((state) => state.searchMsj);
   const all = useSelector((state) => state.filteredGames);
+  // const allV = useSelector((state) => state.videogames);
   const currentPage = useSelector((state) => state.currentPage);
   let dispatch = useDispatch();
   useEffect(() => {

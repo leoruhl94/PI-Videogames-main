@@ -14,6 +14,7 @@ function App() {
       <Switch>
         <Route path="/" exact> <Landing/> </Route>
         <Route path="/home" > <Home/> </Route>
+        {/* <Route path="/home?search=:name" > <Home/> </Route> */}
         <Route path="/addGame" exact> <AddGame/> </Route>
         <Route path="/detail/:id" exact> <GameDetail/> </Route>
         <Route path="*" exact> <Redirect404/> </Route>

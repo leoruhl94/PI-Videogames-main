@@ -22,6 +22,7 @@ import { sortArrayByNameOrRating } from "../functions/functions";
 
 const initialState = {
   videogames: [],
+  allVideogames: [],
   filteredGames: [],
   genres: [],
   platforms: [],
@@ -34,87 +35,90 @@ const initialState = {
   searchMsj: "",
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
+const reducer = (state = initialState, {type, payload}) => {
+ 
+  switch (type) {
     case GET_GENRES:
       return {
         ...state,
-        genres: action.payload,
+        genres: payload,
       };
     case GET_PLATFORMS:
       return {
         ...state,
-        platforms: action.payload,
+        platforms: payload,
       };
 
     case GET_VIDEOGAMES:
       return {
         ...state,
-        videogames: action.payload,
-        filteredGames: action.payload,
-        totalPages: Math.ceil(action.payload.length / ITEMS_PER_PAGE),
+        allVideogames: payload,
+        videogames: payload,
+        filteredGames: payload,
+        totalPages: Math.ceil(payload.length / ITEMS_PER_PAGE),
         currentPage: 1,
         filterFrom: FROM_ALL,
         order: ASC,
       };
 
     case SEARCH_VIDEOGAMES:
-      let search = [...action.payload],
+      let search = [...payload],
         msj = "";
-      if (action.payload[0].error) {
+      if (payload[0].error) {
         search = [];
-        msj = action.payload[0].msj;
+        msj = payload[0].msj;
       }
       return {
         ...state,
         filteredGames: [...search],
+        videogames: [...search],
         searchMsj: msj,
-        totalPages: Math.ceil(action.payload.length / ITEMS_PER_PAGE),
+        totalPages: Math.ceil(payload.length / ITEMS_PER_PAGE),
         currentPage: 1,
       };
 
     case SORT_GAMES:
-      let orderedArray2 = sortArrayByNameOrRating(
+      let orderedArray = sortArrayByNameOrRating(
         [...state.filteredGames],
-        action.payload.by,
-        action.payload.sort
+        payload.by,
+        payload.sort
       );
       return {
         ...state,
-        filteredGames: [...orderedArray2],
-        order: action.payload.sort,
+        filteredGames: [...orderedArray],
+        order: payload.sort,
       };
 
 
     case ALL_FILTERS:
-      let { name, value, active } = action.payload;
-      let aFiltrar = [...state.videogames];
-      let filtros = [...state.filters];
+      let { name, value, active } = payload;
+      let filteredArray = [...state.videogames];
+      let filters = [...state.filters];
       let from = state.filterFrom;
       if (name === GENRES) {
-        aFiltrar = [...state.videogames];
-        filtros = active
+        filteredArray = [...state.videogames];
+        filters = active
           ? [...state.filters, value]
-          : filtros.filter((x) => x !== value);
+          : filters.filter((x) => x !== value);
       } else if(name === FROM){
         from = value
       }
 
-      filtros.forEach((genero) => {
-        aFiltrar = aFiltrar.filter((item) => item.genres.includes(genero));
+      filters.forEach((genero) => {
+        filteredArray = filteredArray.filter((item) => item.genres.includes(genero));
       });
 
       if (from !== FROM_ALL) {
-        aFiltrar =
+        filteredArray =
           from === FROM_API
-            ? aFiltrar?.filter((item) => !item.createdInDb)
-            : aFiltrar?.filter((item) => item.createdInDb);
+            ? filteredArray?.filter((item) => !item.createdInDb)
+            : filteredArray?.filter((item) => item.createdInDb);
       }
       return {
         ...state,
-        filteredGames: [...aFiltrar],
+        filteredGames: [...filteredArray],
         filterFrom: from,
-        filters: [...filtros],
+        filters: [...filters],
         order: ASC,
       };
 
@@ -124,13 +128,14 @@ const reducer = (state = initialState, action) => {
         filterFrom: FROM_ALL,
         filters: [],
         order: ASC,
-        filteredGames: [...state.videogames],
+        filteredGames: [...state.allVideogames],
+        searchMsj: "",
       };
 
     case CHANGE_PAGE:
       return {
         ...state,
-        currentPage: action.payload,
+        currentPage: payload,
       };
 
     case GET_CURRENT_PAGE:
