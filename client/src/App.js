@@ -1,11 +1,11 @@
 import './App.css';
 import { AddGame } from './containers/AddGame/AddGame';
-import { Home } from './containers/Home/Home';
+import { Home2 } from './containers/Home2/Home2';
 import { Landing } from './containers/Landing/Landing';
 import { Route, Switch } from 'react-router-dom';
 import { GameDetail } from './containers/GameDetail/GameDetail';
 import { Redirect404 } from './containers/Redirect404/Redirect404';
-
+// import { Home } from './containers/Home/Home';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
 
       <Switch>
         <Route path="/" exact> <Landing/> </Route>
-        <Route path="/home" > <Home/> </Route>
+        <Route path="/home" > <Home2/> </Route>
         {/* <Route path="/home?search=:name" > <Home/> </Route> */}
         <Route path="/addGame" exact> <AddGame/> </Route>
         <Route path="/detail/:id" exact> <GameDetail/> </Route>

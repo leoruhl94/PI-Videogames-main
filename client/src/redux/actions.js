@@ -1,13 +1,11 @@
-// const { REACT_APP_API_BASE_URL } = 'process.env';
-
 import { ASC, DESC, MAYOR, MINOR, RESET } from "../constantes/constantes";
 
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 export const GET_GENRES = "GET_GENRES";
 export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
-export const GET_CURRENT_PAGE = "GET_CURRENT_PAGE";
-export const CHANGE_PAGE = "CHANGE_PAGE";
+// export const GET_CURRENT_PAGE = "GET_CURRENT_PAGE";
+// export const CHANGE_PAGE = "CHANGE_PAGE";
 export const SORT_GAMES = "SORT_GAMES";
 export const ALL_FILTERS = "ALL_FILTERS";
 export const RESET_FILTERS = "RESET_FILTERS";
@@ -99,16 +97,16 @@ return {
   };
 };
 
-export const changePage = (page) => {
-  return {
-    type: CHANGE_PAGE,
-    payload: page,
-  };
-};
+// export const changePage = (page) => {
+//   return {
+//     type: CHANGE_PAGE,
+//     payload: page,
+//   };
+// };
 
-export const getCurrentGames = () => {
-  return {
-    type: GET_CURRENT_PAGE,
-    payload: "",
-  };
-};
+// export const getCurrentGames = () => {
+//   return {
+//     type: GET_CURRENT_PAGE,
+//     payload: "",
+//   };
+// };
