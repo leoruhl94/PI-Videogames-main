@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { FormInputText } from "../../components/FormInputText/FormInputText";
 import {
   validateText,
@@ -16,7 +17,7 @@ import { FormInputNumber } from "../../components/FormInputNumber/FormInputNumbe
 import { FormInputTextArea } from "../../components/FormInputTextArea/FormInputTextArea";
 import { FormInputDate } from "../../components/FormInputDate/FormInputDate";
 import { FormListOptions } from "../../components/FormListOptions/FormListOptions";
-import { Header } from "../../components/Header/Header";
+import Icon from "../../assets/Icon/Icon";
 
 export const AddGame = () => {
   const platforms = useSelector((state) => state.platforms);
@@ -30,10 +31,7 @@ export const AddGame = () => {
     platforms.length || dispatch(getPlatforms());
   }, [dispatch]);
 
-  const [allInputsOk, setAllInputsOk] = useState(false);
-  const [game, setGame] = useState({
-
-  });
+  const [game, setGame] = useState({});
   const [error, setError] = useState({
     name: true,
     description: true,
@@ -44,32 +42,18 @@ export const AddGame = () => {
     genres: true,
   });
 
-  //__________________Submit___________________
   const onSubmit = (e) => {
     e.preventDefault();
-    let hayError = false;
-    for (const key in error) {
-      console.log(error[key], "onSubmit");
-      if (error[key]) {
-        hayError = true;
-      }
-    }
-    if (hayError) {
-      console.log("uno o mas inputs son invalidos");
-    } else {
-      axios
-        .post("http://127.0.0.1:3001/api/videogame", game)
-        .then(() => {
-          history.push("/home");
-        })
-        .catch((err) => console.error(err));
-    }
+    axios
+      .post("http://127.0.0.1:3001/api/videogame", game)
+      .then(() => {
+        history.push("/home");
+      })
+      .catch((err) => console.error(err));
   };
 
-  //__________________Input control___________________
-
   const handleOnChange = ({ value, error, name }) => {
-    console.log(value, "__", error, "__", name);
+    console.log(getActualDate());
     setGame((state) => {
       return {
         ...state,
@@ -97,6 +81,9 @@ export const AddGame = () => {
     <div className="addGame_background">
       <div className="addGame">
         <form onSubmit={onSubmit} className="addGame_form">
+          <Link to="/home" className="addGame_goback">
+            <Icon svg="xCircle" title="xCircle" />
+          </Link>
           <h2 className="addGame_title">Add a New Game!!</h2>
           <div className="flex_row">
             <div className="flex_column addGame_inputs">
@@ -186,9 +173,6 @@ export const AddGame = () => {
             >
               Add Game
             </button>
-            {/* <button type="button" value="cancel">
-              Cancel
-            </button> */}
           </div>
         </form>
       </div>

@@ -4,7 +4,7 @@ export const validateName = (value) => {
     return (!/[^A-Za-z\s\,]/.test(value) && value);
 }
 export const validateText = (value) => {
-    return (!!value.length);
+    return (!!value.length && value.length < 1000);
 }
 export const validateUrl = (value) => {
     return (/^(ftp|http|https):\/\/[^ "]+$/.test(value) && !!value);
@@ -17,7 +17,7 @@ export const validateRating = (value, min, max) => {
 }
 export const getActualDate = () => {
     const date = new Date();
-    const dia = date.getDay() <= 9 ? "0"+ date.getDay() : date.getDay()
+    const dia = date.getDate() <= 9 ? "0"+ date.getDate() : date.getDate()
     const mes = (date.getMonth() + 1) <= 9 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)
     const año = date.getFullYear()
     return `${año}-${mes}-${dia}`

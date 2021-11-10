@@ -9,7 +9,7 @@ export const FormInputTextArea = ({
   handler,
   msjError,
   rows,
-  cols
+  cols,
 }) => {
   const [state, setState] = useState({});
 
@@ -26,8 +26,13 @@ export const FormInputTextArea = ({
 
   return (
     <div className="input-textarea-component">
-      <label htmlFor={name}> 
-        {label} {state.error && <span className="text_error">{state.msjError}</span> }
+      <label htmlFor={name}>
+        {label}{" "}
+        {state.error  &&(
+          <span className="text_error">
+             {state.value.length >= 1000 ? "Max length 1000" : state.msjError}
+          </span>
+        )}
       </label>
       <textarea
         id={`id-${name}`}

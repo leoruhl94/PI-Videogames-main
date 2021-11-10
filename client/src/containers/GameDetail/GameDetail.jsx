@@ -45,7 +45,7 @@ export const GameDetail = () => {
                     </span>
                   </div>
                   <span className="videogame_released">
-                    {game.released.slice(0, 11)}
+                    {game.released.slice(0, 10)}
                   </span>
                 </div>
 

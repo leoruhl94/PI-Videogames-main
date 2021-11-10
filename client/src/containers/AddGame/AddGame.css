@@ -13,6 +13,19 @@
   color: #dddddd;
   font-size: 1.6rem;
   min-height: 100vh;
+
+}
+.addGame_goback{
+  position: absolute;
+  right: 3.2rem;
+  top: 2.2rem;
+  font-size: 25px;
+  z-index: 1;
+  color: #05dbf2;
+  text-decoration: none;
+}
+.addGame_goback:hover{
+  color: #ff0000;
 }
 .addGame_form {
   display: flex;
@@ -22,6 +35,7 @@
   padding: 2rem 3rem;
   background-color: rgba(0, 0, 0, 0.226);
   max-width: 630px;
+  position: relative;
 }
 .flex_row {
   display: flex;
