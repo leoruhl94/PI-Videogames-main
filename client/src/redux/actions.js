@@ -1,6 +1,6 @@
 // const { REACT_APP_API_BASE_URL } = 'process.env';
 
-import { ASC, DESC, MAYOR, MINOR } from "../constantes/filters";
+import { ASC, DESC, MAYOR, MINOR, RESET } from "../constantes/constantes";
 
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
@@ -9,13 +9,14 @@ export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
 export const GET_CURRENT_PAGE = "GET_CURRENT_PAGE";
 export const CHANGE_PAGE = "CHANGE_PAGE";
 export const SORT_GAMES = "SORT_GAMES";
+export const ALL_FILTERS = "ALL_FILTERS";
 export const FILTER_FROM = "FILTER_FROM";
 export const FILTER_GENRES = "FILTER_GENRES";
+export const RESET_FILTERS = "RESET_FILTERS";
 export const REMOVE_FILTER_GENRES = "REMOVE_FILTER_GENRES";
 
 export const getGenres = () => {
   return function (dispatch) {
-    // fetch(`${REACT_APP_API_BASE_URL}/videogames`)
     fetch(`http://127.0.0.1:3001/api/genres`)
       .then((res) => res.json())
       .then((genres) => {
@@ -89,8 +90,16 @@ export const sortGames = (sort) => {
   };
 };
 
+export const allFilters = (data) => {
+if(data.name === RESET) 
+  return { type: RESET_FILTERS,  payload: data}
+return {
+    type: ALL_FILTERS,
+    payload: data,
+  };
+};
 export const filterGenres = (genre) => {
-  console.log("genres")
+
   return {
     type: FILTER_GENRES,
     payload: genre,
@@ -103,7 +112,7 @@ export const removeFilterGenres = (genre) => {
   };
 };
 export const filterFrom = (from) => {
-  console.log("FRom")
+
   return {
     type: FILTER_FROM,
     payload: from,

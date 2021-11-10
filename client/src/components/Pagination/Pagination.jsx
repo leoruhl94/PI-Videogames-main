@@ -1,6 +1,6 @@
 // import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Icon from "../../assets/Icon/Icon";
+// import Icon from "../../assets/Icon/Icon";
 
 import { changePage } from "../../redux/actions";
 import './Pagination.css'

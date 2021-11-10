@@ -18,7 +18,7 @@ export const Home = () => {
     <div className="home_background">
       <Header nav logo />
       <section className="home">
-        <SearchBar />
+        <SearchBar isnavbar />
         <Filters />
         <Cards />
         <Pagination />

@@ -29,7 +29,7 @@ export const AddGame = () => {
   useEffect(() => {
     genres.length || dispatch(getGenres());
     platforms.length || dispatch(getPlatforms());
-  }, [dispatch]);
+  }, [dispatch, genres.length, platforms.length]);
 
   const [game, setGame] = useState({});
   const [error, setError] = useState({

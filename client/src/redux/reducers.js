@@ -9,9 +9,18 @@ import {
   REMOVE_FILTER_GENRES,
   GET_PLATFORMS,
   SORT_GAMES,
+  RESET_FILTERS,
+  ALL_FILTERS,
 } from "./actions";
 
-import { ASC, FROM_API, MINOR, ITEMS_PER_PAGE, FROM_ALL } from "../constantes/filters";
+import {
+  FROM_API,
+  ITEMS_PER_PAGE,
+  FROM_ALL,
+  ASC,
+  GENRES,
+  FROM,
+} from "../constantes/constantes";
 import { sortArrayByNameOrRating } from "../functions/functions";
 
 const initialState = {
@@ -21,11 +30,11 @@ const initialState = {
   platforms: [],
   filterFrom: FROM_ALL,
   filters: [],
-  order: "",
+  order: ASC,
   currentPage: 1,
   totalPages: 0,
   gamesPerPage: [],
-  searchMsj:"",
+  searchMsj: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -51,10 +60,11 @@ const reducer = (state = initialState, action) => {
       };
 
     case SEARCH_VIDEOGAMES:
-      let search = [...action.payload], msj="";
-      if(action.payload[0].error){
-        search=[];
-        msj=action.payload[0].msj
+      let search = [...action.payload],
+        msj = "";
+      if (action.payload[0].error) {
+        search = [];
+        msj = action.payload[0].msj;
       }
       return {
         ...state,
@@ -64,22 +74,29 @@ const reducer = (state = initialState, action) => {
         currentPage: 1,
       };
 
-     case SORT_GAMES:
-      let orderedArray2 = sortArrayByNameOrRating([...state.filteredGames], action.payload.by , action.payload.sort)
+    case SORT_GAMES:
+      let orderedArray2 = sortArrayByNameOrRating(
+        [...state.filteredGames],
+        action.payload.by,
+        action.payload.sort
+      );
       return {
         ...state,
         filteredGames: [...orderedArray2],
         order: action.payload.sort,
       };
 
-
     case FILTER_GENRES:
       let allGamesFilteredAdd = [...state.videogames];
-      let filtersAdd= action.payload?[...state.filters, action.payload]:[...state.filters];
-      
-      filtersAdd.forEach((x)=>{
-        allGamesFilteredAdd = allGamesFilteredAdd.filter(item => item.genres.includes(x))
-      })
+      let filtersAdd = action.payload
+        ? [...state.filters, action.payload]
+        : [...state.filters];
+
+      filtersAdd.forEach((x) => {
+        allGamesFilteredAdd = allGamesFilteredAdd.filter((item) =>
+          item.genres.includes(x)
+        );
+      });
 
       return {
         ...state,
@@ -89,11 +106,13 @@ const reducer = (state = initialState, action) => {
 
     case REMOVE_FILTER_GENRES:
       let allGamesFilteredRm = [...state.videogames];
-      let filtersRm = state.filters.filter(item => item !== action.payload);
- 
-      filtersRm.forEach((x)=>{
-        allGamesFilteredRm = allGamesFilteredRm.filter(item => item.genres.includes(x))
-      })
+      let filtersRm = state.filters.filter((item) => item !== action.payload);
+
+      filtersRm.forEach((x) => {
+        allGamesFilteredRm = allGamesFilteredRm.filter((item) =>
+          item.genres.includes(x)
+        );
+      });
 
       return {
         ...state,
@@ -103,18 +122,61 @@ const reducer = (state = initialState, action) => {
 
     case FILTER_FROM:
       let allGamesFiltered = [...state.filteredGames];
-      if(action.payload === FROM_ALL)
-        allGamesFiltered = [...state.filteredGames]
-      else{
-        allGamesFiltered = (action.payload === FROM_API 
-          ? allGamesFiltered?.filter(item => !item.createdInDb)
-          : allGamesFiltered?.filter(item => item.createdInDb)
-          )
+      if (action.payload === FROM_ALL)
+        allGamesFiltered = [...state.filteredGames];
+      else {
+        allGamesFiltered =
+          action.payload === FROM_API
+            ? allGamesFiltered?.filter((item) => !item.createdInDb)
+            : allGamesFiltered?.filter((item) => item.createdInDb);
       }
       return {
         ...state,
         filterFrom: action.payload,
-        filteredGames: [...allGamesFiltered]
+        filteredGames: [...allGamesFiltered],
+      };
+
+    case ALL_FILTERS:
+      let { nombre, valor, active } = action.payload;
+      let aFiltrar = [...state.videogames];
+      let filtros = [...state.filters];
+      let from = state.filterFrom;
+
+      if (nombre === GENRES) {
+        aFiltrar = [...state.videogames];
+        filtros = active
+          ? [...state.filters, valor]
+          : filtros.filter((x) => x !== valor);
+      } else if(nombre === FROM){
+        from = valor
+      }
+
+      filtros.forEach((genero) => {
+        aFiltrar = aFiltrar.filter((item) => item.genres.includes(genero));
+      });
+
+      if (from !== FROM_ALL) {
+        aFiltrar =
+          from === FROM_API
+            ? aFiltrar?.filter((item) => !item.createdInDb)
+            : aFiltrar?.filter((item) => item.createdInDb);
+      }
+
+      return {
+        ...state,
+        filteredGames: [...aFiltrar],
+        filterFrom: FROM_ALL,
+        filters: [...filtros],
+        order: ASC,
+      };
+
+    case RESET_FILTERS:
+      return {
+        ...state,
+        filterFrom: FROM_ALL,
+        filters: [],
+        order: ASC,
+        filteredGames: [...state.videogames],
       };
 
     case CHANGE_PAGE:

@@ -1,7 +1,7 @@
-import { ASC, MINOR } from "../constantes/filters";
+import { ASC, MINOR } from "../constantes/constantes";
 
 export const validateName = (value) => {
-    return (!/[^A-Za-z\s\,]/.test(value) && value);
+    return (!/[^A-Za-z\s]/.test(value) && value);
 }
 export const validateText = (value) => {
     return (!!value.length && value.length < 1000);

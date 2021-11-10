@@ -1,15 +1,15 @@
 import "./Filters.css";
-import { filterFrom, filterGenres, getVideogames, sortGames } from "../../redux/actions";
+import { filterFrom, filterGenres, getVideogames, sortGames, allFilters } from "../../redux/actions";
 import { WidgetFilterGenres } from "../WidgetFilterGenres/WidgetFilterGenres";
 import { ButtonDispatch } from "../ButtonDispatch/ButtonDispatch";
-import { ASC, DESC, FROM_ALL, FROM_API, FROM_DB, MAYOR, MINOR } from "../../constantes/filters";
+import { ASC, DESC, FROM_ALL, FROM_API, FROM_DB, MAYOR, MINOR, RESET, FROM, GENRES } from "../../constantes/constantes";
 import { useDispatch } from "react-redux";
 
 export const Filters = () => {
   let dispatch = useDispatch();
 
   const handlerFrom = (value) => {
-    console.log(value, "Handler From")
+    console.log(value, "Handler From")//==============================
     dispatch(filterGenres())
     dispatch(filterFrom(value))
   }

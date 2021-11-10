@@ -14,7 +14,6 @@ export const ButtonDispatch = ({
 }) => {
   let dispatch = useDispatch();
   const handleOnClick = (e) => {
-    console.log(action, handler)
     handler && handler(value);
     action && dispatch(action(value));
   };
@@ -33,11 +32,8 @@ export const ButtonDispatch = ({
           <Icon svg={icon} title={icon} />
         </span>
       ) : (
-        <span className="button_distpach_text">
-          { text }
-        </span>
-        )}
-        
+        <span className="button_distpach_text">{text}</span>
+      )}
     </button>
   );
 };
