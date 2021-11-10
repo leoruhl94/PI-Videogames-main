@@ -42,7 +42,7 @@ export const Pagination = () => {
       ))
       : <>{" "}</>}
            { 
-     (totalPages > 2 && currentPage !== totalPages ) ? 
+     (totalPages > 1 && currentPage !== totalPages ) ? 
      <button className="page_btn" value={currentPage + 1} onClick={onClick} >
           next
       </button>

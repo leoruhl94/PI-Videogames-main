@@ -120,6 +120,7 @@ const reducer = (state = initialState, {type, payload}) => {
         filterFrom: from,
         filters: [...filters],
         order: ASC,
+        currentPage: 1,
       };
 
     case RESET_FILTERS:
@@ -130,6 +131,7 @@ const reducer = (state = initialState, {type, payload}) => {
         order: ASC,
         filteredGames: [...state.allVideogames],
         searchMsj: "",
+        currentPage: 1,
       };
 
     case CHANGE_PAGE:

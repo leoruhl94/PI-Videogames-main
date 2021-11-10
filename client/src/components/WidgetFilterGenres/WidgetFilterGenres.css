@@ -1,35 +1,34 @@
-.filter_bar_genres{
-    display: flex;
-    flex-direction: row;
-    width: 60%;
-    margin: 0 2rem;
+.filter_bar_genres {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  margin: 0 2rem;
 }
-.filter_genres_selected{
-    width: 70%;
-    margin-left: 1rem;
-    overflow-x:auto;
-    display: flex;
-    flex-direction: row; 
-    flex-wrap: nowrap;
- }
+.filter_genres_selected {
+  width: 70%;
+  margin-left: 1rem;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
 
- .filter_genres_selected::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
-  .filter_genres_selected::-webkit-scrollbar-thumb {
-    background: #05dbf2;
-    border-radius: 4px;
-  }
-  
-  .filter_genres_selected::-webkit-scrollbar-thumb:hover {
-    background: #059bf2;
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-  }
-  
-  .filter_genres_selected::-webkit-scrollbar-track {
-    background: #0000005d;
-    border-radius: 4px;
-  }
-  
+.filter_genres_selected::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.filter_genres_selected::-webkit-scrollbar-thumb {
+  background: #05dbf2;
+  border-radius: 4px;
+}
+
+.filter_genres_selected::-webkit-scrollbar-thumb:hover {
+  background: #059bf2;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.filter_genres_selected::-webkit-scrollbar-track {
+  background: #0000005d;
+  border-radius: 4px;
+}

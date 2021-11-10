@@ -10,7 +10,7 @@ export const Cards = () => {
   const games = useSelector((state) => state.gamesPerPage);
   const searchMsj = useSelector((state) => state.searchMsj);
   const all = useSelector((state) => state.filteredGames);
-  // const allV = useSelector((state) => state.videogames);
+  const videogames = useSelector((state) => state.allVideogames);
   const currentPage = useSelector((state) => state.currentPage);
   let dispatch = useDispatch();
   useEffect(() => {
@@ -37,7 +37,12 @@ export const Cards = () => {
               );
             })
           ) : (
-              <Loading />
+            <>
+            {
+              all  ? <Loading />   
+              :<Loading /> 
+            }
+            </>
       
           )}
        </>
