@@ -1,12 +1,9 @@
 import {
   GET_VIDEOGAMES,
   SEARCH_VIDEOGAMES,
-  FILTER_FROM,
-  FILTER_GENRES,
   CHANGE_PAGE,
   GET_CURRENT_PAGE,
   GET_GENRES,
-  REMOVE_FILTER_GENRES,
   GET_PLATFORMS,
   SORT_GAMES,
   RESET_FILTERS,
@@ -57,6 +54,8 @@ const reducer = (state = initialState, action) => {
         filteredGames: action.payload,
         totalPages: Math.ceil(action.payload.length / ITEMS_PER_PAGE),
         currentPage: 1,
+        filterFrom: FROM_ALL,
+        order: ASC,
       };
 
     case SEARCH_VIDEOGAMES:
@@ -80,7 +79,6 @@ const reducer = (state = initialState, action) => {
         action.payload.by,
         action.payload.sort
       );
-      console.log("SORT GAMES", action.payload)
       return {
         ...state,
         filteredGames: [...orderedArray2],
@@ -112,11 +110,10 @@ const reducer = (state = initialState, action) => {
             ? aFiltrar?.filter((item) => !item.createdInDb)
             : aFiltrar?.filter((item) => item.createdInDb);
       }
-
       return {
         ...state,
         filteredGames: [...aFiltrar],
-        filterFrom: FROM_ALL,
+        filterFrom: from,
         filters: [...filtros],
         order: ASC,
       };

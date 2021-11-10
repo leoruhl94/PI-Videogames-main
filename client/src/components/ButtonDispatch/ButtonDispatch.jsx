@@ -18,10 +18,11 @@ export const ButtonDispatch = ({
     action && dispatch(action({value, name}));
   };
 
+  // console.log("active", active,"nombre", value)
   return (
     <button
       key={value}
-      className={`button_distpach ${active && "active"}`}
+      className={`button_distpach ${active && "button_dispatch_active"}`}
       type="button"
       value={value}
       name={name}

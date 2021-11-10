@@ -1,12 +1,12 @@
 // import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Icon from "../../assets/Icon/Icon";
+// import Icon from "../../assets/Icon/Icon";
 
 import { changePage } from "../../redux/actions";
-import './Pagination2.css'
+import './Pagination.css'
 
 
-export const Pagination2 = () => {
+export const Pagination = () => {
   const [totalPages, currentPage ]= useSelector((state) => [state.totalPages, state.currentPage]);
   const dispatch = useDispatch();
   let pageNumbers = [];
@@ -29,20 +29,26 @@ export const Pagination2 = () => {
   return (
     <div className="pagination">
      { 
-     totalPages > 0 ? 
+     (totalPages > 2 && currentPage !== 1 )? 
      <button className="page_btn" value={currentPage - 1} onClick={onClick} disabled={currentPage===1}>
           prev
       </button>
       : <>{" "}</>
       }
-      {pageNumbers.map((item) => (
-        <button key={item} className="page_btn" value={item} onClick={onClick}>
+      {totalPages > 1 ? pageNumbers.map((item) => (
+        <button key={item} className={`page_btn ${currentPage === item ? 'page_btn_active' : '' }`} value={item} onClick={onClick} >
           {item}
         </button>
-      ))}
-      <button className="page_btn" value={currentPage + 1} onClick={onClick}>
-        next
+      ))
+      : <>{" "}</>}
+           { 
+     (totalPages > 2 && currentPage !== totalPages ) ? 
+     <button className="page_btn" value={currentPage + 1} onClick={onClick} >
+          next
       </button>
+      : <>{" "}</>
+      }
+
     </div>
   );
 };

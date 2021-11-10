@@ -29,20 +29,26 @@ export const Pagination = () => {
   return (
     <div className="pagination">
      { 
-     totalPages > 0 ? 
+     (totalPages > 2 && currentPage !== 1 )? 
      <button className="page_btn" value={currentPage - 1} onClick={onClick} disabled={currentPage===1}>
           prev
       </button>
       : <>{" "}</>
       }
-      {pageNumbers.map((item) => (
-        <button key={item} className="page_btn" value={item} onClick={onClick}>
+      {totalPages > 1 ? pageNumbers.map((item) => (
+        <button key={item} className={`page_btn ${currentPage === item ? 'page_btn_active' : '' }`} value={item} onClick={onClick} >
           {item}
         </button>
-      ))}
-      <button className="page_btn" value={currentPage + 1} onClick={onClick}>
-        next
+      ))
+      : <>{" "}</>}
+           { 
+     (totalPages > 2 && currentPage !== totalPages ) ? 
+     <button className="page_btn" value={currentPage + 1} onClick={onClick} >
+          next
       </button>
+      : <>{" "}</>
+      }
+
     </div>
   );
 };

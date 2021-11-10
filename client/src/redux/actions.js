@@ -10,10 +10,8 @@ export const GET_CURRENT_PAGE = "GET_CURRENT_PAGE";
 export const CHANGE_PAGE = "CHANGE_PAGE";
 export const SORT_GAMES = "SORT_GAMES";
 export const ALL_FILTERS = "ALL_FILTERS";
-export const FILTER_FROM = "FILTER_FROM";
-export const FILTER_GENRES = "FILTER_GENRES";
 export const RESET_FILTERS = "RESET_FILTERS";
-export const REMOVE_FILTER_GENRES = "REMOVE_FILTER_GENRES";
+
 
 export const getGenres = () => {
   return function (dispatch) {
@@ -85,7 +83,6 @@ export const sortGames = (data) => {
   let by = "";
   if (sort === ASC || sort === DESC) by = "name";
   if (sort === MINOR || sort === MAYOR) by = "rating";
-  console.log("SORT ___ DATA", data )
   return {
     type: SORT_GAMES,
     payload: { sort, by },

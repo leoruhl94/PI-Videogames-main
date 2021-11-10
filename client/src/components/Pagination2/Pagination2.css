@@ -23,3 +23,7 @@
     color: #05dbf2;
 }
 
+.pagination .page_btn_active{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #05dbf2;
+ }

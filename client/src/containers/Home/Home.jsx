@@ -13,7 +13,7 @@ export const Home = () => {
   useEffect(() => {
     dispatch(getGenres());
     dispatch(getVideogames());
-  }, [dispatch]);
+   }, [dispatch]);
   return (
     <div className="home_background">
       <Header nav logo />

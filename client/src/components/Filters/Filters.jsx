@@ -16,8 +16,11 @@ import {
   RESET,
   FROM,
 } from "../../constantes/constantes";
+import { useSelector } from "react-redux";
 
 export const Filters = () => {
+  const [order, from] = useSelector(state => [state.order, state.filterFrom])
+
   return (
     <section className="filters">
       <div className="filters_buttons">
@@ -26,6 +29,7 @@ export const Filters = () => {
           name={RESET}
           value={RESET}
           action={allFilters}
+          active={false}  
         />
 
         <ButtonDispatch
@@ -33,24 +37,28 @@ export const Filters = () => {
           name={ASC}
           value={ASC}
           action={sortGames}
-        />
+          active={order === ASC}
+          />
         <ButtonDispatch
           icon="orderZA"
           name={DESC}
           value={DESC}
           action={sortGames}
-        />
+          active={order === DESC}
+          />
         <ButtonDispatch
           icon="order19"
           name={MINOR}
           value={MINOR}
           action={sortGames}
-        />
+          active={order === MINOR}
+          />
         <ButtonDispatch
           icon="order91"
           name={MAYOR}
           value={MAYOR}
           action={sortGames}
+          active={order === MAYOR}
         />
 
         <ButtonDispatch
@@ -58,19 +66,21 @@ export const Filters = () => {
           name={FROM}
           value={FROM_ALL}
           action={allFilters}
-          active
+          active={from === FROM_ALL}  
         />
         <ButtonDispatch
           text="DB"
           name={FROM}
           value={FROM_DB}
           action={allFilters}
+          active={from === FROM_DB}  
         />
         <ButtonDispatch
           text="API"
           name={FROM}
           value={FROM_API}
           action={allFilters}
+          active={from === FROM_API}  
         />
       </div>
 

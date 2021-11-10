@@ -4,6 +4,17 @@
   border: none;
   cursor: pointer;
   margin: 0 0.5rem;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  border-radius: 1rem;
+}
+.button_distpach:hover {
+  background-color: rgba(0, 0, 0, 0.445);
+}
+.button_distpach:hover .button_distpach_icon{
+  color: #05DBF2
+}
+.button_distpach:hover .button_distpach_text{
+  color: #05DBF2
 }
 
 .button_distpach_icon {
@@ -14,4 +25,12 @@
 .button_distpach_text {
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.button_dispatch_active{
+  background-color: rgba(0, 0, 0, 0.445);
+}
+.button_dispatch_active .button_distpach_icon,
+.button_dispatch_active .button_distpach_text{
+  color: #05DBF2;
 }
