@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getGenres, getVideogames } from "../../redux/actions";
 import { Filters } from "../../components/Filters/Filters";
 import { Pagination2 } from "../../components/Pagination2/Pagination2";
@@ -9,6 +9,13 @@ import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Header } from "../../components/Header/Header";
 
 export const Home2 = () => {
+  const games = useSelector((state) => state.filteredGames);
+  const [currentPage, setCurrentPage] = useState([])
+
+  const getPage = (items)=>{
+      setCurrentPage(items)
+  }
+
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getGenres());
@@ -20,8 +27,11 @@ export const Home2 = () => {
       <section className="home">
         <SearchBar isnavbar />
         <Filters />
-        <Cards2 />
-        <Pagination2 />
+        <Cards2 items={currentPage}/>
+        <Pagination2 
+          arrayItems={games}
+          handler={getPage}
+        />
       </section>
     </div>
   );
