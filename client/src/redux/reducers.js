@@ -80,75 +80,26 @@ const reducer = (state = initialState, action) => {
         action.payload.by,
         action.payload.sort
       );
+      console.log("SORT GAMES", action.payload)
       return {
         ...state,
         filteredGames: [...orderedArray2],
         order: action.payload.sort,
       };
 
-    case FILTER_GENRES:
-      let allGamesFilteredAdd = [...state.videogames];
-      let filtersAdd = action.payload
-        ? [...state.filters, action.payload]
-        : [...state.filters];
-
-      filtersAdd.forEach((x) => {
-        allGamesFilteredAdd = allGamesFilteredAdd.filter((item) =>
-          item.genres.includes(x)
-        );
-      });
-
-      return {
-        ...state,
-        filteredGames: [...allGamesFilteredAdd],
-        filters: [...filtersAdd],
-      };
-
-    case REMOVE_FILTER_GENRES:
-      let allGamesFilteredRm = [...state.videogames];
-      let filtersRm = state.filters.filter((item) => item !== action.payload);
-
-      filtersRm.forEach((x) => {
-        allGamesFilteredRm = allGamesFilteredRm.filter((item) =>
-          item.genres.includes(x)
-        );
-      });
-
-      return {
-        ...state,
-        filteredGames: [...allGamesFilteredRm],
-        filters: [...filtersRm],
-      };
-
-    case FILTER_FROM:
-      let allGamesFiltered = [...state.filteredGames];
-      if (action.payload === FROM_ALL)
-        allGamesFiltered = [...state.filteredGames];
-      else {
-        allGamesFiltered =
-          action.payload === FROM_API
-            ? allGamesFiltered?.filter((item) => !item.createdInDb)
-            : allGamesFiltered?.filter((item) => item.createdInDb);
-      }
-      return {
-        ...state,
-        filterFrom: action.payload,
-        filteredGames: [...allGamesFiltered],
-      };
 
     case ALL_FILTERS:
-      let { nombre, valor, active } = action.payload;
+      let { name, value, active } = action.payload;
       let aFiltrar = [...state.videogames];
       let filtros = [...state.filters];
       let from = state.filterFrom;
-
-      if (nombre === GENRES) {
+      if (name === GENRES) {
         aFiltrar = [...state.videogames];
         filtros = active
-          ? [...state.filters, valor]
-          : filtros.filter((x) => x !== valor);
-      } else if(nombre === FROM){
-        from = valor
+          ? [...state.filters, value]
+          : filtros.filter((x) => x !== value);
+      } else if(name === FROM){
+        from = value
       }
 
       filtros.forEach((genero) => {

@@ -80,10 +80,12 @@ export const searchVideogames = (search) => {
   };
 };
 
-export const sortGames = (sort) => {
+export const sortGames = (data) => {
+  let sort = data.value;
   let by = "";
   if (sort === ASC || sort === DESC) by = "name";
   if (sort === MINOR || sort === MAYOR) by = "rating";
+  console.log("SORT ___ DATA", data )
   return {
     type: SORT_GAMES,
     payload: { sort, by },
@@ -91,6 +93,7 @@ export const sortGames = (sort) => {
 };
 
 export const allFilters = (data) => {
+
 if(data.name === RESET) 
   return { type: RESET_FILTERS,  payload: data}
 return {
@@ -98,27 +101,6 @@ return {
     payload: data,
   };
 };
-export const filterGenres = (genre) => {
-
-  return {
-    type: FILTER_GENRES,
-    payload: genre,
-  };
-};
-export const removeFilterGenres = (genre) => {
-  return {
-    type: REMOVE_FILTER_GENRES,
-    payload: genre,
-  };
-};
-export const filterFrom = (from) => {
-
-  return {
-    type: FILTER_FROM,
-    payload: from,
-  };
-};
-
 
 export const changePage = (page) => {
   return {

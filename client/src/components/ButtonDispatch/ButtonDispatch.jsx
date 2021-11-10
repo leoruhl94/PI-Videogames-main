@@ -15,7 +15,7 @@ export const ButtonDispatch = ({
   let dispatch = useDispatch();
   const handleOnClick = (e) => {
     handler && handler(value);
-    action && dispatch(action(value));
+    action && dispatch(action({value, name}));
   };
 
   return (

@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterGenres, removeFilterGenres } from "../../redux/actions";
+import { allFilters } from "../../redux/actions";
 import { OptionItem } from "../OptionItem/OptionItem";
 import Icon from "../../assets/Icon/Icon";
 import "./WidgetFilterGenres.css";
+import { GENRES } from "../../constantes/constantes";
 
 export const WidgetFilterGenres = () => {
-  const genres = useSelector((state) => state.genres);
+  const [genres, filters] = useSelector((state) => [state.genres, state.filters]);
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
 
   useEffect(() => {
-    setItems(genres);
-    setSelectedItems([]);
-  }, [genres]);
+    !filters.length && setItems(genres);
+    !filters.length && setSelectedItems([]);
+  }, [genres, filters]);
 
 
   const handleOnChange = (data) => {
     const { id, name, selected } = data;
-    dispatch(selected ? filterGenres(name) : removeFilterGenres(name));
+    dispatch(allFilters({name: GENRES, value:name, active:selected}));
 
     let newItems = selected
       ? items.filter((x) => x.id !== id)
