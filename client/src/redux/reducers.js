@@ -1,8 +1,8 @@
 import {
   GET_VIDEOGAMES,
   SEARCH_VIDEOGAMES,
-  CHANGE_PAGE,
-  GET_CURRENT_PAGE,
+  // CHANGE_PAGE,
+  // GET_CURRENT_PAGE,
   GET_GENRES,
   GET_PLATFORMS,
   SORT_GAMES,
@@ -12,7 +12,7 @@ import {
 
 import {
   FROM_API,
-  ITEMS_PER_PAGE,
+  // ITEMS_PER_PAGE,
   FROM_ALL,
   ASC,
   GENRES,
@@ -29,9 +29,9 @@ const initialState = {
   filterFrom: FROM_ALL,
   filters: [],
   order: ASC,
-  currentPage: 1,
-  totalPages: 0,
-  gamesPerPage: [],
+  // currentPage: 1,
+  // totalPages: 0,
+  // gamesPerPage: [],
   searchMsj: "",
   filterNoMatch: false,
 };
@@ -56,8 +56,8 @@ const reducer = (state = initialState, {type, payload}) => {
         allVideogames: payload,
         videogames: payload,
         filteredGames: payload,
-        totalPages: Math.ceil(payload.length / ITEMS_PER_PAGE),
-        currentPage: 1,
+        // totalPages: Math.ceil(payload.length / ITEMS_PER_PAGE),
+        // currentPage: 1,
         filterFrom: FROM_ALL,
         order: ASC,
       };
@@ -74,8 +74,8 @@ const reducer = (state = initialState, {type, payload}) => {
         filteredGames: [...search],
         videogames: [...search],
         searchMsj: msj,
-        totalPages: Math.ceil(payload.length / ITEMS_PER_PAGE),
-        currentPage: 1,
+        // totalPages: Math.ceil(payload.length / ITEMS_PER_PAGE),
+        // currentPage: 1,
       };
 
     case SORT_GAMES:
@@ -123,7 +123,7 @@ const reducer = (state = initialState, {type, payload}) => {
         filterFrom: from,
         filters: [...filters],
         order: ASC,
-        currentPage: 1,
+        // currentPage: 1,
         filterNoMatch: filterNoMatch,
       };
 
@@ -135,24 +135,24 @@ const reducer = (state = initialState, {type, payload}) => {
         order: ASC,
         filteredGames: [...state.allVideogames],
         searchMsj: "",
-        currentPage: 1,
+        // currentPage: 1,
       };
 
-    case CHANGE_PAGE:
-      return {
-        ...state,
-        currentPage: payload,
-      };
+    // case CHANGE_PAGE:
+    //   return {
+    //     ...state,
+    //     currentPage: payload,
+    //   };
 
-    case GET_CURRENT_PAGE:
-      let lastIndex = state.currentPage * ITEMS_PER_PAGE;
-      let firstIndex = lastIndex - ITEMS_PER_PAGE;
-      let items = state.filteredGames.slice(firstIndex, lastIndex);
-      return {
-        ...state,
-        gamesPerPage: items,
-        totalPages: Math.ceil(state.filteredGames.length / ITEMS_PER_PAGE),
-      };
+    // case GET_CURRENT_PAGE:
+    //   let lastIndex = state.currentPage * ITEMS_PER_PAGE;
+    //   let firstIndex = lastIndex - ITEMS_PER_PAGE;
+    //   let items = state.filteredGames.slice(firstIndex, lastIndex);
+    //   return {
+    //     ...state,
+    //     gamesPerPage: items,
+    //     totalPages: Math.ceil(state.filteredGames.length / ITEMS_PER_PAGE),
+    //   };
 
     default:
       return state;

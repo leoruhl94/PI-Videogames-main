@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { ITEMS_PER_PAGE } from "../../constantes/constantes";
+import "./Pagination2.css";
 // import Icon from "../../assets/Icon/Icon";
 
-import { changePage } from "../../redux/actions";
-import "./Pagination2.css";
 
 export const Pagination2 = ({ arrayItems, handler }) => {
   let totalPages = Math.ceil(arrayItems.length / ITEMS_PER_PAGE);
-  const dispatch = useDispatch();
-  const [nroPage, setNroPage] = useState(0);
+  const [nroPage, setNroPage] = useState(1);
   let pageNumbers = [];
-
   let lastIndex = nroPage * ITEMS_PER_PAGE;
   let firstIndex = lastIndex - ITEMS_PER_PAGE;
   let items = arrayItems.slice(firstIndex, lastIndex);
@@ -20,16 +16,17 @@ export const Pagination2 = ({ arrayItems, handler }) => {
     pageNumbers.push(i);
   }
   useEffect(() => {
+   
     handler(items);
-  }, [nroPage]);
+  }, [nroPage,arrayItems]);
   useEffect(() => {
     setNroPage(1);
   }, [arrayItems]);
 
   const onClick = (e) => {
-    let target = parseInt(e.target.value);
-    if (target <= totalPages && target >= 1) {
-       setNroPage(target);
+    let page = Number(e.target.value);
+    if (page <= totalPages && page >= 1) {
+       setNroPage(page);
     }
   };
 
