@@ -32,7 +32,7 @@ router.post("/", async (req, res, next) => {
     await newVideogame.addGenres(genres)
     await newVideogame.addPlatforms(platforms)
 
-    res.status(201).json(newVideogame);
+    res.status(201).json(newVideogame.id);
   } catch (error) {
     next(error);
   }
@@ -87,7 +87,7 @@ router.get("/:id", async (req, res, next) => {
       });
     } catch (error) {
       res.status(404).json({error:true, msj: "Sorry, game info not found", status:404})
-       next();
+      next();
     }
   }
 });

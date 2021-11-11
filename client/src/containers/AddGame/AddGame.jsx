@@ -46,8 +46,8 @@ export const AddGame = () => {
     e.preventDefault();
     axios
       .post("http://127.0.0.1:3001/api/videogame", game)
-      .then(() => {
-        history.push("/home");
+      .then((id) => {
+        history.push(`/detail/${id.data}`);
       })
       .catch((err) => console.error(err));
   };
