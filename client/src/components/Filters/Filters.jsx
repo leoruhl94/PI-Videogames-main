@@ -1,8 +1,5 @@
 import "./Filters.css";
-import {
-  sortGames,
-  allFilters,
-} from "../../redux/actions";
+import { sortGames, allFilters } from "../../redux/actions";
 import { WidgetFilterGenres } from "../WidgetFilterGenres/WidgetFilterGenres";
 import { ButtonDispatch } from "../ButtonDispatch/ButtonDispatch";
 import {
@@ -19,7 +16,7 @@ import {
 import { useSelector } from "react-redux";
 
 export const Filters = () => {
-  const [order, from] = useSelector(state => [state.order, state.filterFrom])
+  const [order, from] = useSelector((state) => [state.order, state.filterFrom]);
 
   return (
     <section className="filters">
@@ -29,7 +26,7 @@ export const Filters = () => {
           name={RESET}
           value={RESET}
           action={allFilters}
-          active={false}  
+          active={false}
         />
 
         <ButtonDispatch
@@ -38,21 +35,21 @@ export const Filters = () => {
           value={ASC}
           action={sortGames}
           active={order === ASC}
-          />
+        />
         <ButtonDispatch
           icon="orderZA"
           name={DESC}
           value={DESC}
           action={sortGames}
           active={order === DESC}
-          />
+        />
         <ButtonDispatch
           icon="order19"
           name={MINOR}
           value={MINOR}
           action={sortGames}
           active={order === MINOR}
-          />
+        />
         <ButtonDispatch
           icon="order91"
           name={MAYOR}
@@ -66,21 +63,21 @@ export const Filters = () => {
           name={FROM}
           value={FROM_ALL}
           action={allFilters}
-          active={from === FROM_ALL}  
+          active={from === FROM_ALL}
         />
         <ButtonDispatch
           text="DB"
           name={FROM}
           value={FROM_DB}
           action={allFilters}
-          active={from === FROM_DB}  
+          active={from === FROM_DB}
         />
         <ButtonDispatch
           text="API"
           name={FROM}
           value={FROM_API}
           action={allFilters}
-          active={from === FROM_API}  
+          active={from === FROM_API}
         />
       </div>
 

@@ -13,9 +13,8 @@
   color: #dddddd;
   font-size: 1.6rem;
   min-height: 100vh;
-
 }
-.addGame_goback{
+.addGame_goback {
   position: absolute;
   right: 3.2rem;
   top: 2.2rem;
@@ -24,7 +23,7 @@
   color: #05dbf2;
   text-decoration: none;
 }
-.addGame_goback:hover{
+.addGame_goback:hover {
   color: #ff0000;
 }
 .addGame_form {
@@ -61,7 +60,7 @@
   border-radius: 1.5rem;
   margin-top: 3.3rem;
   border: 0.2px solid #00030346;
- }
+}
 .addGame_preview_image img {
   width: 25rem;
   height: 30rem;

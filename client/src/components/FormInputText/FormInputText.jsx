@@ -20,7 +20,6 @@ export const FormInputText = ({
       setState({ value, error: true, msjError });
       handler({ name, value, error: true });
     }
-    console.log("LOG___HAY ERROR", state.error);
   };
 
   return (

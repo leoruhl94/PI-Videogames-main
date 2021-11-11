@@ -26,3 +26,9 @@
   margin-bottom: 4rem;
   text-decoration: none;
 }
+
+.page_404_link:hover {
+  color: rgb(221, 221, 221);
+  text-shadow: 0 0 125px white, 0 0 10px rgba(255, 255, 255, 0.664);
+  font-family: monospace;
+}

@@ -19,9 +19,7 @@ export const GameCard = (props) => {
                 title={rating > 2.5 ? "starSolid" : "starOutline"}
               />
             </span>
-            <span className="game-card_details__rating-text">
-              {rating} / 5
-            </span>
+            <span className="game-card_details__rating-text">{rating} / 5</span>
           </div>
           <div className="game-card_details__genres">
             {genres?.map((item) => {

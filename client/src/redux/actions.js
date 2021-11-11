@@ -4,12 +4,9 @@ export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 export const GET_GENRES = "GET_GENRES";
 export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
-// export const GET_CURRENT_PAGE = "GET_CURRENT_PAGE";
-// export const CHANGE_PAGE = "CHANGE_PAGE";
 export const SORT_GAMES = "SORT_GAMES";
 export const ALL_FILTERS = "ALL_FILTERS";
 export const RESET_FILTERS = "RESET_FILTERS";
-
 
 export const getGenres = () => {
   return function (dispatch) {
@@ -88,25 +85,9 @@ export const sortGames = (data) => {
 };
 
 export const allFilters = (data) => {
-
-if(data.name === RESET) 
-  return { type: RESET_FILTERS,  payload: data}
-return {
+  if (data.name === RESET) return { type: RESET_FILTERS, payload: data };
+  return {
     type: ALL_FILTERS,
     payload: data,
   };
 };
-
-// export const changePage = (page) => {
-//   return {
-//     type: CHANGE_PAGE,
-//     payload: page,
-//   };
-// };
-
-// export const getCurrentGames = () => {
-//   return {
-//     type: GET_CURRENT_PAGE,
-//     payload: "",
-//   };
-// };

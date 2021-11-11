@@ -15,10 +15,9 @@ export const ButtonDispatch = ({
   let dispatch = useDispatch();
   const handleOnClick = (e) => {
     handler && handler(value);
-    action && dispatch(action({value, name}));
+    action && dispatch(action({ value, name }));
   };
 
-  // console.log("active", active,"nombre", value)
   return (
     <button
       key={value}

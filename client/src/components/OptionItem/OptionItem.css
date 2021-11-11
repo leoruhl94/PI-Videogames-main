@@ -1,38 +1,36 @@
-.option_item{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-    background-color: rgba(0, 0, 0, 0.24);
-    font-family: "Brutal Type";
-    font-size: 1.2rem;
-    padding: .4rem;
-    padding-bottom: 0;
-    margin: .3rem .5rem;
-    border-radius: 1rem;
+.option_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.24);
+  font-family: "Brutal Type";
+  font-size: 1.2rem;
+  padding: 0.4rem;
+  padding-bottom: 0;
+  margin: 0.3rem 0.5rem;
+  border-radius: 1rem;
 }
-.option_item_text{
-margin-bottom: 3px;
-line-height: normal;
+.option_item_text {
+  margin-bottom: 3px;
+  line-height: normal;
 }
 
-.option_item_button{
-    background-color: rgba(0, 0, 0, 0);
-    outline: none;
-    border: none;
-    margin-left: .4rem;
-    font-size: 1.4rem;
-   
-    
+.option_item_button {
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  border: none;
+  margin-left: 0.4rem;
+  font-size: 1.4rem;
 }
-.option_selected button{
-    color: #f23405;
-} 
-.option_normal button{
-    color: rgb(0, 255, 13);
+.option_selected button {
+  color: #f23405;
 }
-.option_item:hover{
-    background-color: rgba(82, 82, 82, 0.767);
-    color: white;
+.option_normal button {
+  color: rgb(0, 255, 13);
+}
+.option_item:hover {
+  background-color: rgba(82, 82, 82, 0.767);
+  color: white;
 }

@@ -1,44 +1,37 @@
-.landing{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('../../assets/images/background_1.jpg');
-    background-size: cover;
-    min-height: 100vh; 
-    /* background-size: 56% 100%; */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: auto auto;
-
-  
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/images/background_1.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: auto auto;
 }
 
-.landing a{
-    font-size: 4rem;
-    text-decoration: none;
-    font-weight: 500;
+.landing a {
+  font-size: 4rem;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.landing a:hover{
-    font-size: 4.5rem;
-    font-weight: 600; 
+.landing a:hover {
+  font-size: 4.5rem;
+  font-weight: 600;
 }
-
 
 x-sign {
-    --interval: 1s;
-    display: block;
-    text-shadow: 
-      0 0 10px var(--color1),
-      0 0 20px var(--color2),
-      0 0 40px var(--color3),
-      0 0 80px var(--color4);
-    will-change: filter, color;
-    filter: saturate(60%);
-    animation: flicker steps(100) var(--interval) 1s infinite;
-  }
+  --interval: 1s;
+  display: block;
+  text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2),
+    0 0 40px var(--color3), 0 0 80px var(--color4);
+  will-change: filter, color;
+  filter: saturate(60%);
+  animation: flicker steps(100) var(--interval) 1s infinite;
+}
 
-  /* x-sign{
+/* x-sign{
     color: azure;
     --color1: azure;
     --color2: aqua;
@@ -47,18 +40,18 @@ x-sign {
     font-family: Sriracha, monospace;
   } */
 
-  x-sign {
-    color: dodgerblue;
-    --color1: goldenrod;
-    --color2: azure;
-    --color3: mediumblue;
-    --color4: purple;
-    font-family: monospace;
-  } 
+x-sign {
+  color: dodgerblue;
+  --color1: goldenrod;
+  --color2: azure;
+  --color3: mediumblue;
+  --color4: purple;
+  font-family: "Brutal Type";
+}
 
-  @keyframes flicker {
-    50% {
-      color: white;
-      filter: saturate(200%) hue-rotate(20deg);
-    }
+@keyframes flicker {
+  50% {
+    color: white;
+    filter: saturate(200%) hue-rotate(20deg);
   }
+}

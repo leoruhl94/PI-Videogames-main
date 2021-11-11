@@ -28,9 +28,9 @@ export const FormInputTextArea = ({
     <div className="input-textarea-component">
       <label htmlFor={name}>
         {label}{" "}
-        {state.error  &&(
+        {state.error && (
           <span className="text_error">
-             {state.value.length >= 1000 ? "Max length 1000" : state.msjError}
+            {state.value.length >= 1000 ? "Max length 1000" : state.msjError}
           </span>
         )}
       </label>

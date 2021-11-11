@@ -10,7 +10,6 @@
 
 .videogame_container {
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   flex-direction: row-reverse;
   font-family: "Brutal Type";

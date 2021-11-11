@@ -52,7 +52,7 @@ export const FormListOptions = ({
             <Icon svg="arrowDown" title="arrowDown" />
           </span>
         </button>
-        {error.error && <span className="text_error">{error.msjError}</span> }
+        {error.error && <span className="text_error">{error.msjError}</span>}
         <div className="dropdown-content">
           {items?.map((item) => {
             return (
@@ -69,7 +69,11 @@ export const FormListOptions = ({
         </div>
       </div>
 
-      <div className={`selected_options ${error.error ? "border_error" : "border_ok"}`}>
+      <div
+        className={`selected_options ${
+          error.error ? "border_error" : "border_ok"
+        }`}
+      >
         {selectedItems?.map((item) => {
           return (
             <OptionItem
@@ -82,7 +86,6 @@ export const FormListOptions = ({
           );
         })}
       </div>
-
     </div>
   );
 };

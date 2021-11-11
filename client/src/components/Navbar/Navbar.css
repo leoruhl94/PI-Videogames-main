@@ -1,17 +1,14 @@
-
-
 .nav .nav-links {
-    text-decoration: none;
-    color: #04B2D9;
-    font-weight: 500;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
-    margin: 0.5rem 0;
+  text-decoration: none;
+  color: #04b2d9;
+  font-weight: 500;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
 }
 
 .nav .nav-links:hover {
-    color: #05DBF2;
-    text-shadow: rgb(0, 0, 0) 1px 1px 5px;
-    font-weight: 600;
+  color: #05dbf2;
+  text-shadow: rgb(0, 0, 0) 1px 1px 5px;
+  font-weight: 600;
 }
-

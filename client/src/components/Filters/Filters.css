@@ -1,32 +1,32 @@
-.filters{
-    display: flex;
-    flex-direction: row;
-    padding: 0.5rem 1.5rem;
-    background-color: #011526aa;
-    color:rgba(255, 255, 255, 0.74);
-    font-family: "Roboto";
-    width: 100%;
-    height: fit-content;
+.filters {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem 1.5rem;
+  background-color: #011526aa;
+  color: rgba(255, 255, 255, 0.74);
+  font-family: "Roboto";
+  width: 100%;
+  height: fit-content;
 }
-.filters_buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 40%;
+.filters_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 40%;
 }
 
-.iconito{
-    transform: rotateY(180deg);  
+.iconito {
+  transform: rotateY(180deg);
 }
-.filters_reset{
-    background-color: rgba(0, 0, 0, 0);
-    width: 50px;
-    height: 50px;
-    outline: none;
-    border: none;
-    cursor: pointer;
+.filters_reset {
+  background-color: rgba(0, 0, 0, 0);
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
-.filters_reset_icon{
-    font-size: 4rem;
-    color:rgba(255, 255, 255, 0.8);
+.filters_reset_icon {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.8);
 }

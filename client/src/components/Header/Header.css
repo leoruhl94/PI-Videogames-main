@@ -1,19 +1,18 @@
 .main-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #02010f;
-    height: 15vh;
-    min-height: 80px;
-    width: 100%;
-    padding: 0 7%;
-    margin: auto;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #02010f;
+  height: 15vh;
+  min-height: 80px;
+  width: 100%;
+  padding: 0 7%;
+  margin: auto;
 }
 
 .main-header .logo {
-    color:#05DBF2;
-    text-decoration: none;
-    font-size: 4rem;
-    font-weight: 600;
+  color: #05dbf2;
+  text-decoration: none;
+  font-size: 4rem;
+  font-weight: 600;
 }

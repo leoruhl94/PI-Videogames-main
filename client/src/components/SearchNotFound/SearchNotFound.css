@@ -1,10 +1,10 @@
 .game-card_details__title_search {
-    color: white;
-    font-size: 1.6rem;
-    margin: 5px 0px 2rem 0px;
-  }
-  
-.search_not_found{
-    width: 250px;
-    height: 300px;
+  color: white;
+  font-size: 1.6rem;
+  margin: 5px 0px 2rem 0px;
+}
+
+.search_not_found {
+  width: 250px;
+  height: 300px;
 }

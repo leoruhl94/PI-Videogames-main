@@ -1,28 +1,23 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCurrentGames } from "../../redux/actions";
+import { useSelector } from "react-redux";
 import { GameCard } from "../GameCard/GameCard";
 import { Loading } from "../Loading/Loading";
 import { SearchNotFound } from "../SearchNotFound/SearchNotFound";
 import "./Cards.css";
 
-export const Cards = () => {
-  const [games, currentPage] = useSelector((state) => [state.gamesPerPage, state.currentPage]);
-  const [searchMsj, filterNoMatch]= useSelector((state) => [state.searchMsj, state.filterNoMatch]);
-  const all = useSelector((state) => state.filteredGames);
-  let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCurrentGames()); 
-  }, [all, currentPage, dispatch, searchMsj]);
+export const Cards = ({ items }) => {
+  const [searchMsj, filterNoMatch] = useSelector((state) => [
+    state.searchMsj,
+    state.filterNoMatch,
+  ]);
 
   return (
     <div className="cards">
       {searchMsj ? (
-        <SearchNotFound name={searchMsj} />  
+        <SearchNotFound name={searchMsj} />
       ) : (
         <>
-          {games.length ? (
-            games?.map((item) => {
+          {items.length ? (
+            items?.map((item) => {
               return (
                 <GameCard
                   id={item.id}
@@ -36,14 +31,14 @@ export const Cards = () => {
             })
           ) : (
             <>
-            {
-              filterNoMatch  ? <SearchNotFound name={"No Results"} />    
-              :<Loading /> 
-            }
+              {filterNoMatch ? (
+                <SearchNotFound name={"No Results"} />
+              ) : (
+                <Loading />
+              )}
             </>
-      
           )}
-       </>
+        </>
       )}
     </div>
   );

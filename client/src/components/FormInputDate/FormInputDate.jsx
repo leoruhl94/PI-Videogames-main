@@ -8,13 +8,12 @@ export const FormInputDate = ({
   handler,
   msjError,
   min,
-  max
+  max,
 }) => {
-
   const [state, setState] = useState({});
 
   const handleOnChange = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const { value, name } = e.target;
     if (validation(value)) {
       setState({ value, error: false, msjError: "" });
@@ -25,11 +24,11 @@ export const FormInputDate = ({
     }
   };
 
-
   return (
     <div className="input-date-component">
-      <label htmlFor={name}> 
-      {label} {state.error && <span className="text_error">{state.msjError}</span> }
+      <label htmlFor={name}>
+        {label}{" "}
+        {state.error && <span className="text_error">{state.msjError}</span>}
       </label>
 
       <input
@@ -41,7 +40,6 @@ export const FormInputDate = ({
         min={min}
         max={max}
       />
-      
-     </div>
+    </div>
   );
 };
