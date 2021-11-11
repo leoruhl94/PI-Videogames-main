@@ -3,10 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchVideogames } from "../../redux/actions";
 import Icon from "../../assets/Icon/Icon";
+import { useHistory } from "react-router";
 
 export const SearchBar = () => {
   const [search, setSearch] = useState("");
   let dispatch = useDispatch();
+  let history = useHistory();
 
   const onChange = (e) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ export const SearchBar = () => {
     e.preventDefault();
     if (search) dispatch(searchVideogames(search));
     setSearch("");
+    history.push({search:`?name=${search}`})
   };
 
   return (

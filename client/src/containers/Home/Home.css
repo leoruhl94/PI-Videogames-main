@@ -4,11 +4,14 @@
   align-items: center;
   padding: 3% 2%;
   backdrop-filter: blur(6px);
+  min-height: 100vh;
 }
 .home_background {
-  background-image: url("../../assets/images/background_3.jpg");
-  background-size: 100% 100vh;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: url("../../assets/images/background_09.jpg") center center fixed;
   background-color: #021132;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
 }

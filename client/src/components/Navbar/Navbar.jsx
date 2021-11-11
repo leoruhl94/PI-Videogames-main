@@ -7,6 +7,9 @@ export const Navbar = () => {
       <NavLink to="/home" className="nav-links">
         Home
       </NavLink>
+      <NavLink to="/home" className="nav-links">
+        My Games
+      </NavLink>
       <NavLink to="/addGame" className="nav-links">
         Add Game
       </NavLink>

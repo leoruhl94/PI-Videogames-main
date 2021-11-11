@@ -14,9 +14,15 @@ import {
   FROM,
 } from "../../constantes/constantes";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 export const Filters = () => {
   const [order, from] = useSelector((state) => [state.order, state.filterFrom]);
+  let history = useHistory();
+
+  const resetPath = (value) => {
+    history.push("/home");
+  }
 
   return (
     <section className="filters">
@@ -27,6 +33,7 @@ export const Filters = () => {
           value={RESET}
           action={allFilters}
           active={false}
+          handler={resetPath}
         />
 
         <ButtonDispatch

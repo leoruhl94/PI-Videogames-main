@@ -5,7 +5,6 @@ import { Filters } from "../../components/Filters/Filters";
 import { Pagination } from "../../components/Pagination/Pagination";
 import "./Home.css";
 import { Cards } from "../../components/Cards/Cards";
-import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Header } from "../../components/Header/Header";
 
 export const Home = () => {
@@ -22,9 +21,8 @@ export const Home = () => {
   }, [dispatch]);
   return (
     <div className="home_background">
-      <Header nav logo />
+      <Header nav search logo />
       <section className="home">
-        <SearchBar />
         <Filters />
         <Cards items={currentPage} />
         <Pagination arrayItems={games} handler={getPage} />

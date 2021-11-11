@@ -61,14 +61,13 @@ export const searchVideogames = (search) => {
     fetch(`http://127.0.0.1:3001/api/videogames?name=${search}`)
       .then((res) => res.json())
       .then((videogames) => {
-        console.log(videogames);
         dispatch({
           type: SEARCH_VIDEOGAMES,
           payload: videogames,
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   };
 };

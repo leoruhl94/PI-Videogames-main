@@ -3,8 +3,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: #02010f;
-  height: 15vh;
-  min-height: 80px;
+  height: 100px;
   width: 100%;
   padding: 0 7%;
   margin: auto;
@@ -15,4 +14,12 @@
   text-decoration: none;
   font-size: 4rem;
   font-weight: 600;
+}
+.logo_header{
+ background-image: url('../../assets/images/logo_miniatura.jpg');
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ height: 100px;
+ z-index: 1;
 }

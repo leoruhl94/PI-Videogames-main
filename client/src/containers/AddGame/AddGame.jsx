@@ -53,7 +53,6 @@ export const AddGame = () => {
   };
 
   const handleOnChange = ({ value, error, name }) => {
-    console.log(getActualDate());
     setGame((state) => {
       return {
         ...state,

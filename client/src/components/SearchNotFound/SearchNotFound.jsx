@@ -12,7 +12,6 @@ export const SearchNotFound = ({ name }) => {
   ];
 
   const handleOnClick = (e) => {
-    console.log(RESET);
     dispatch(allFilters({ name: RESET }));
   };
   const randomImage = () => {

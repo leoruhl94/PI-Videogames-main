@@ -1,11 +1,13 @@
 .videogame_background {
   display: flex;
   flex-direction: column;
-  background-image: url("../../assets/images/background_4.jpg");
-  background-size: 100% 100vh;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height: 100vmin;
+  min-height: 100vh;
+  background: url("../../assets/images/background_4.jpg") center center fixed no-repeat;
+  background-color: #021132;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .videogame_container {
@@ -19,7 +21,7 @@
   backdrop-filter: blur(6px);
   color: #dddddd;
   font-size: 1.6rem;
-  min-height: 100%;
+  min-height: 100vh;
 }
 .videogame_info {
   background-color: rgba(0, 0, 0, 0.6);
