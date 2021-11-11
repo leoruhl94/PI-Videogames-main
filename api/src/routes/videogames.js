@@ -6,12 +6,6 @@ const { API_KEY } = process.env;
 const { Op } = require('sequelize');
 
 
-//Obtener un listado de los videojuegos
-//Debe devolver solo los datos necesarios para la ruta principal
-//query: Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
-//Si no existe ningún videojuego mostrar un mensaje adecuado
-
-
 router.get('/', (req, res, next) => {
     const { name } = req.query;
     let vgApi_1 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${1}`);
@@ -68,9 +62,9 @@ router.get('/', (req, res, next) => {
                 }
             })
 
-        videogamesFilteredApi = videogamesFilteredApi.sort((a,b)=> {
-            return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-            } )
+            videogamesFilteredApi = videogamesFilteredApi.sort((a,b)=> {
+                return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+            })
             res.json(videogamesFilteredApi)
         })
         .catch((error) => {

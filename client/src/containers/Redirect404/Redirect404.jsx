@@ -4,7 +4,6 @@ import { useLocation } from "react-router";
 
 export const Redirect404 = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <div className="page_404">
       {location.state ? (

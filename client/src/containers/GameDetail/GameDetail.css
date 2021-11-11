@@ -77,7 +77,7 @@
   font-size: 1.4rem;
   white-space: pre-wrap;
   overflow-y: auto;
-  max-height: 250px;
+  max-height: 230px;
 
 }
 .videogame_subtitles {
@@ -100,3 +100,35 @@
   background: #0000005d;
   border-radius: 4px;
 }
+
+
+
+@media screen and ( max-width: 700px){
+  .videogame_container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3rem 5%;
+  }
+  .videogame_img {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 700px) and (max-width: 1000px){
+  .videogame_img {
+    width: 50%;
+  }
+  .videogame_container {
+    padding: 6rem 5%;
+  }
+}
+@media screen and ( min-width: 1000px){
+  .videogame_img {
+    width: 40%;
+  }
+}
+/* @media screen and ( min-width: 1400px){
+  .videogame_img {
+    width: 600px;
+  }
+} */

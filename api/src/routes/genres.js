@@ -7,7 +7,10 @@ router.get("/", async (req, res, next) => {
 
   Genres.findAll()
     .then((allGenres) => {
-      res.status(200).json(allGenres);
+      let allGenresOrdered = allGenres.sort((a, b) => {
+        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+      });
+      res.status(200).json(allGenresOrdered);
     })
     .catch((err) => {
       next(err);

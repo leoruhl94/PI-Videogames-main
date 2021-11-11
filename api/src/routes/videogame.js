@@ -3,23 +3,18 @@ const router = Router();
 const { Videogames, Genres, Platforms } = require("../db");
 const { API_KEY } = process.env;
 const axios = require("axios");
-const { validateText, validateNumber, validateArray, validateUrl, validateDate} = require("../controllers/validations");
 
+const { validatePostVideogame } = require("../controllers/validations");
 
 router.post("/", async (req, res, next) => {
-  const { name, description, image, rating, released, platforms, genres } = req.body;
-  let error = [];
+  const { name, description, image, rating, released, platforms, genres } =
+    req.body;
+  let error = validatePostVideogame(req.body);
 
-  !validateText(name) ? error = [...error, { input: "name", err: "name no puede estar vacio y debe ser tipo string"}] : error = [...error];
-  !validateNumber(rating,0,5)? error = [...error, {input: "rating", err:" rating no puede estar vacio y debe ser un numero entre 0 y 5"}] : error = [...error];
-  !validateDate(released)? error = [...error, {input: "released", err:"no es una fecha valida"}] : error = [...error];
-  !validateText(description)? error = [...error, {input: "description", err:"description no puede estar vacio y debe ser tipo string"}] : error = [...error];
-  !validateUrl(image)? error = [...error, {input: "image", err:"image no puede estar vacio y debe ser una url valida"}] : error = [...error];
-  !validateArray(genres, "number")? error = [...error, {input: "genres", err:"genres debe ser un array de numeros y contener al menos 1 elemento"}] : error = [...error];
-  !validateArray(platforms, "number")? error = [...error, {input: "platforms", err:"platforms debe ser un array de numeros y contener al menos 1 elemento"}] : error = [...error];
-
- 
-  if(error.length) return res.status(400).json(error); 
+  if (error.length)
+    return res
+      .status(400)
+      .json({ error: true, msj: "Bad Request", data: error, status: 400 });
 
   try {
     const newVideogame = await Videogames.create({
@@ -29,15 +24,14 @@ router.post("/", async (req, res, next) => {
       image,
       rating,
     });
-    await newVideogame.addGenres(genres)
-    await newVideogame.addPlatforms(platforms)
+    await newVideogame.addGenres(genres);
+    await newVideogame.addPlatforms(platforms);
 
     res.status(201).json(newVideogame.id);
   } catch (error) {
     next(error);
   }
 });
- 
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
@@ -45,11 +39,16 @@ router.get("/:id", async (req, res, next) => {
     try {
       let videogame = await Videogames.findOne({
         where: { id },
-        include: [{model : Genres, attributes:['name'], through: {attributes: []}},
-        {model : Platforms, attributes:['name'], through: {attributes: []} }],
+        include: [
+          { model: Genres, attributes: ["name"], through: { attributes: [] } },
+          {
+            model: Platforms,
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+        ],
       });
-      videogame? 
-       res.json({
+      res.json({
         name: videogame.name,
         description: videogame.description,
         released: videogame.released,
@@ -57,9 +56,13 @@ router.get("/:id", async (req, res, next) => {
         image: videogame.image,
         platforms: videogame.platforms.map((item) => item.name),
         genres: videogame.genres.map((item) => item.name),
-      })
-      : res.status(400).json({error:true, msj: "Sorry, game info not found", status:400})
+      });
     } catch (error) {
+      res.status(400).json({
+        error: true,
+        msj: "Sorry, game info not found",
+        status: 400,
+      });
       next(error);
     }
   } else {
@@ -86,8 +89,10 @@ router.get("/:id", async (req, res, next) => {
         genres: genres.map((item) => item.name),
       });
     } catch (error) {
-      res.status(404).json({error:true, msj: "Sorry, game info not found", status:404})
-      next();
+      res
+        .status(404)
+        .json({ error: true, msj: "Sorry, game info not found", status: 404 });
+      next(error);
     }
   }
 });

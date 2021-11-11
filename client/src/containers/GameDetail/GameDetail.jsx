@@ -20,11 +20,14 @@ export const GameDetail = () => {
       });
   }, [id]);
 
-  game?.error &&
-    history.push({
-      pathname: `/${game.status}`,
-      state: { msj: game.msj, status: game.status },
-    });
+  useEffect(()=>{
+    game?.error &&
+      history.push({
+        pathname: `/${game.status}`,
+        state: { msj: game.msj, status: game.status },
+      });
+
+  },[game,history])
 
   return (
     <>
