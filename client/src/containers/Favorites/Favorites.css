@@ -1,0 +1,17 @@
+.fav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3% 2%;
+  backdrop-filter: blur(6px);
+  min-height: 100vh;
+}
+.fav_background {
+  background: url("../../assets/images/background_2.jpg") center center fixed;
+  background-color: #021132;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+}

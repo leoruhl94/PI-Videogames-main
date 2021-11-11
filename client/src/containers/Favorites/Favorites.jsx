@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVideogames } from "../../redux/actions";
 import { Filters } from "../../components/Filters/Filters";
 import { Pagination } from "../../components/Pagination/Pagination";
-import "./Home.css";
+import "./Favorites.css";
 import { Cards } from "../../components/Cards/Cards";
 import { Header } from "../../components/Header/Header";
 
-export const Home = () => {
-  const games = useSelector((state) => state.filteredGames);
+export const Favorites = () => {
+  const favorites = useSelector((state) => state.filteredFavGames);
   const [currentPage, setCurrentPage] = useState([]);
 
   const getPage = (items) => {
@@ -17,16 +17,16 @@ export const Home = () => {
 
   let dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getVideogames());
+    // dispatch(getVideogames());
   }, [dispatch]);
 
   return (
-    <div className="home_background">
+    <div className="fav_background">
       <Header nav search logo />
-      <section className="home">
+      <section className="fav">
         <Filters />
         <Cards items={currentPage} />
-        <Pagination arrayItems={games} handler={getPage} />
+        <Pagination arrayItems={favorites} handler={getPage} />
       </section>
     </div>
   );

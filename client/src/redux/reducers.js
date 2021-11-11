@@ -21,6 +21,8 @@ const initialState = {
   videogames: [],
   allVideogames: [],
   filteredGames: [],
+  favGames:[],
+  filteredFavGames:[],
   genres: [],
   platforms: [],
   filterFrom: FROM_ALL,

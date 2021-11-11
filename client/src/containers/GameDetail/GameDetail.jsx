@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import Icon from "../../assets/Icon/Icon";
 import { Loading } from "../../components/Loading/Loading";
 import { Header } from "../../components/Header/Header";
@@ -7,6 +7,7 @@ import "./GameDetail.css";
 
 export const GameDetail = () => {
   const [game, setGame] = useState(null);
+  let history = useHistory();
   let { id } = useParams();
   useEffect(() => {
     fetch(`http://127.0.0.1:3001/api/videogame/${id}`)
@@ -14,8 +15,16 @@ export const GameDetail = () => {
       .then((game) => {
         setGame(game);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+      });
   }, [id]);
+
+  game?.error &&
+    history.push({
+      pathname: `/${game.status}`,
+      state: { msj: game.msj, status: game.status },
+    });
 
   return (
     <>
@@ -45,7 +54,7 @@ export const GameDetail = () => {
                     </span>
                   </div>
                   <span className="videogame_released">
-                    {game.released.slice(0, 10)}
+                    {game.released?.slice(0, 10)}
                   </span>
                 </div>
 
@@ -53,7 +62,7 @@ export const GameDetail = () => {
                   <div className="videogame_list">
                     <h3 className="videogame_subtitles">Genres</h3>
                     <div className="videogame_tags">
-                      {game.genres.map((item) => {
+                      {game.genres?.map((item) => {
                         return <span key={item}>{item}</span>;
                       })}
                     </div>
@@ -61,7 +70,7 @@ export const GameDetail = () => {
                   <div className="videogame_list">
                     <h3 className="videogame_subtitles">Platforms</h3>
                     <div className="videogame_tags">
-                      {game.platforms.map((item) => {
+                      {game.platforms?.map((item) => {
                         return <span key={item}>{item}</span>;
                       })}
                     </div>
@@ -69,10 +78,10 @@ export const GameDetail = () => {
                 </div>
                 <div className="videogame_description">
                   <h3 className="videogame_subtitles">Description</h3>
-                  <p
+                  <div
                     className="videogame_description_text"
                     dangerouslySetInnerHTML={{ __html: game.description }}
-                  ></p>
+                  ></div>
                 </div>
               </div>
             </>

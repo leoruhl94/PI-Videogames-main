@@ -20,6 +20,20 @@
   font-weight: 600;
   margin-bottom: 4rem;
 }
+.page_404_number_status {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 20rem;
+  font-family: monospace;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.page_404_msj {
+  color: rgba(255, 255, 255, 0.589);
+  font-size: 2rem;
+  font-family: monospace;
+  font-weight: 600;
+  margin-bottom: 4rem;
+}
 
 .page_404_link {
   color: rgba(255, 255, 255, 0.4);

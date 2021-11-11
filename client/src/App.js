@@ -5,6 +5,7 @@ import { Landing } from "./containers/Landing/Landing";
 import { Route, Switch } from "react-router-dom";
 import { GameDetail } from "./containers/GameDetail/GameDetail";
 import { Redirect404 } from "./containers/Redirect404/Redirect404";
+import { Favorites } from "./containers/Favorites/Favorites";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/home" exact>
           <Home />
+        </Route>
+        <Route path="/myGames" exact>
+          <Favorites />
         </Route>
         <Route path="/addGame" exact>
           <AddGame />

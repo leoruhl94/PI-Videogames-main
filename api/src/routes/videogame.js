@@ -41,7 +41,7 @@ router.post("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
-  if (typeof id === "string" && id.length > 8) {
+  if (typeof id === "string" && id.length === 36) {
     try {
       let videogame = await Videogames.findOne({
         where: { id },
@@ -58,7 +58,7 @@ router.get("/:id", async (req, res, next) => {
         platforms: videogame.platforms.map((item) => item.name),
         genres: videogame.genres.map((item) => item.name),
       })
-      : res.status(404).json({msj: "No se encontro informacion para este videojuego"})
+      : res.status(400).json({error:true, msj: "Sorry, game info not found", status:400})
     } catch (error) {
       next(error);
     }
@@ -86,7 +86,8 @@ router.get("/:id", async (req, res, next) => {
         genres: genres.map((item) => item.name),
       });
     } catch (error) {
-       next(error);
+      res.status(404).json({error:true, msj: "Sorry, game info not found", status:404})
+       next();
     }
   }
 });

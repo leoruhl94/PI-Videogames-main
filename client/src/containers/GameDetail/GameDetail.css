@@ -75,6 +75,10 @@
 
 .videogame_description_text {
   font-size: 1.4rem;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  max-height: 250px;
+
 }
 .videogame_subtitles {
   font-family: "Roboto";
@@ -82,4 +86,17 @@
   font-weight: 500;
   font-size: 1.6rem;
   margin: 1rem 0;
+}
+
+.videogame_description_text::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.videogame_description_text::-webkit-scrollbar-thumb {
+  background: #292828a6;
+  border-radius: 4px;
+}
+.videogame_description_text::-webkit-scrollbar-track {
+  background: #0000005d;
+  border-radius: 4px;
 }
