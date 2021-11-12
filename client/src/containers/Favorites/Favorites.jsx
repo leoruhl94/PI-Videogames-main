@@ -1,33 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogames } from "../../redux/actions";
+import { getFavorites } from "../../redux/actions";
 import { Filters } from "../../components/Filters/Filters";
-import { Pagination } from "../../components/Pagination/Pagination";
 import "./Favorites.css";
-import { Cards } from "../../components/Cards/Cards";
+import { CardsFavs } from "../../components/CardsFavs/CardsFavs";
 import { Header } from "../../components/Header/Header";
+import { useHistory } from "react-router";
 
 export const Favorites = () => {
   const favorites = useSelector((state) => state.filteredFavGames);
-  const [currentPage, setCurrentPage] = useState([]);
-
-  const getPage = (items) => {
-    setCurrentPage(items);
-  };
+  const error = useSelector((state) => state.getError);
+  const history = useHistory();
 
   let dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getVideogames());
+    dispatch(getFavorites());
   }, [dispatch]);
+  useEffect(() => {
+    error.error && history.push({ pathname:`/${error.status}`, state: error})
+  }, [error, history]);
+
 
   return (
     <div className="fav_background">
-      <Header nav search logo />
-      <section className="fav">
+      <Header nav  logo />
+      <section className="fav_void">
         <Filters />
-        <Cards items={currentPage} />
-        <Pagination arrayItems={favorites} handler={getPage} />
+        <div className="banner" >
+          <h2 >Aun No Has Añadido Ningun Juego A Tu Coleccion</h2>
+        </div>
       </section>
+      {/* <section className="fav">
+        <Filters />
+        <CardsFavs items={favorites} />
+      </section> */}
     </div>
   );
 };

@@ -2,34 +2,17 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GameCard } from "../GameCard/GameCard";
 import { Loading } from "../Loading/Loading";
-import { Pagination } from "../Pagination copy/Pagination";
+import { Pagination } from "../Pagination/Pagination";
 import { SearchNotFound } from "../SearchNotFound/SearchNotFound";
-import "./Cards.css";
+import "./CardsFavs.css";
 
-export const Cards = ({ items }) => {
+export const CardsFavs = ({ items }) => {
   const [searchMsj, filterNoMatch] = useSelector((state) => [
     state.searchMsj,
     state.filterNoMatch,
   ]);
-//===========================
-// const error = useSelector((state) => state.getError);
-// const games = useSelector((state) => state.filteredGames);
+
 const [currentPage, setCurrentPage] = useState([]);
-// const history = useHistory();
-// const getPage = (items) => {
-//   setCurrentPage(items);
-// };
-
-// let dispatch = useDispatch();
-// useEffect(() => {
-//   dispatch(getVideogames());
-// }, [dispatch]);
-// useEffect(() => {
-//   error.error && history.push({ pathname:`/${error.status}`, state: error})
-// }, [error, history]);
-
-
-
 
   return (
     <>

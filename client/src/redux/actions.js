@@ -1,13 +1,14 @@
 import { ASC, DESC, MAYOR, MINOR, RESET } from "../constantes/constantes";
 
+export const GET_ERROR = "GET_ERROR";
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const GET_PLATFORMS = "GET_PLATFORMS";
 export const GET_GENRES = "GET_GENRES";
+export const GET_FAVORITES = "GET_FAVORITES";
 export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
 export const SORT_GAMES = "SORT_GAMES";
 export const ALL_FILTERS = "ALL_FILTERS";
 export const RESET_FILTERS = "RESET_FILTERS";
-export const GET_ERROR = "GET_ERROR";
 
 export const getGenres = () => {
   return function (dispatch) {
@@ -54,6 +55,26 @@ export const getVideogames = () => {
         : dispatch({
           type: GET_VIDEOGAMES,
           payload: videogames,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+};
+export const getFavorites = () => {
+  return function (dispatch) {
+    fetch(`http://127.0.0.1:3001/api/videogames`)
+      .then((res) => res.json())
+      .then((favorites) => {
+        favorites[0].error
+        ? dispatch({
+          type: GET_ERROR,
+          payload: favorites[0],
+        })
+        : dispatch({
+          type: GET_FAVORITES,
+          payload: favorites,
         });
       })
       .catch((error) => {

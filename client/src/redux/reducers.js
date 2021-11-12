@@ -7,6 +7,7 @@ import {
   RESET_FILTERS,
   ALL_FILTERS,
   GET_ERROR,
+  GET_FAVORITES,
 } from "./actions";
 
 import {
@@ -50,6 +51,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         platforms: payload,
+      };
+    case GET_FAVORITES:
+      return {
+        ...state,
+        favGames: payload,
+        filteredFavGames: payload,
       };
 
     case GET_VIDEOGAMES:
@@ -132,6 +139,7 @@ const reducer = (state = initialState, { type, payload }) => {
         filterFrom: FROM_ALL,
         filters: [],
         order: ASC,
+        videogames: [...state.allVideogames],
         filteredGames: [...state.allVideogames],
         searchMsj: "",
       };

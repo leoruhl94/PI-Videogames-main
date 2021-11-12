@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { GameCard } from "../GameCard/GameCard";
 import { Loading } from "../Loading/Loading";
+import { Pagination } from "../Pagination/Pagination";
 import { SearchNotFound } from "../SearchNotFound/SearchNotFound";
 import "./Cards.css";
 
@@ -9,15 +11,16 @@ export const Cards = ({ items }) => {
     state.searchMsj,
     state.filterNoMatch,
   ]);
-
+  const [currentPage, setCurrentPage] = useState([]);
   return (
+    <>
     <div className="cards">
       {searchMsj ? (
         <SearchNotFound name={searchMsj} />
       ) : (
         <>
-          {items.length ? (
-            items?.map((item) => {
+          {currentPage.length ? (
+            currentPage?.map((item) => {
               return (
                 <GameCard
                   id={item.id}
@@ -41,5 +44,7 @@ export const Cards = ({ items }) => {
         </>
       )}
     </div>
+    <Pagination arrayItems={items} handler={setCurrentPage} />
+    </>
   );
 };

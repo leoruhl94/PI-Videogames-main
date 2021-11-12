@@ -11,13 +11,13 @@ router.get('/', (req, res, next) => {
     let vgApi_1 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${1}`);
     let vgApi_2 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${2}`);
     let vgApi_3 = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=40&page=${3}`);
-    let searchedApi = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`);
     let videogamesDb = Videogames.findAll({include: Genres});
+    
+    let searchedApi = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`);
     let findGamesDb = Videogames.findAll({ include: Genres, where:{ name: {
         [Op.iLike]: "%" + name + "%"
     }}});
-    
-    
+        
     if(name){
         Promise.all([searchedApi, findGamesDb])
         .then((response) => {
@@ -77,3 +77,4 @@ router.get('/', (req, res, next) => {
 
 
 module.exports = router;
+
