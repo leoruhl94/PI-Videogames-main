@@ -7,6 +7,7 @@ export const SEARCH_VIDEOGAMES = "SEARCH_VIDEOGAMES";
 export const SORT_GAMES = "SORT_GAMES";
 export const ALL_FILTERS = "ALL_FILTERS";
 export const RESET_FILTERS = "RESET_FILTERS";
+export const GET_ERROR = "GET_ERROR";
 
 export const getGenres = () => {
   return function (dispatch) {
@@ -45,7 +46,12 @@ export const getVideogames = () => {
     fetch(`http://127.0.0.1:3001/api/videogames`)
       .then((res) => res.json())
       .then((videogames) => {
-        dispatch({
+        videogames[0].error
+        ? dispatch({
+          type: GET_ERROR,
+          payload: videogames[0],
+        })
+        : dispatch({
           type: GET_VIDEOGAMES,
           payload: videogames,
         });

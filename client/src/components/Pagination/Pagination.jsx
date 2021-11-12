@@ -13,10 +13,10 @@ export const Pagination = ({ arrayItems, handler }) => {
   for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
+
   useEffect(() => {
-   
     handler(items);
-  }, [nroPage,arrayItems]);
+   }, [nroPage,arrayItems]);
   useEffect(() => {
     setNroPage(1);
   }, [arrayItems]);

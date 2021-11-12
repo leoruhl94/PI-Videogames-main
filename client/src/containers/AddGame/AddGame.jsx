@@ -106,7 +106,7 @@ export const AddGame = () => {
                   minValue="0"
                   maxValue="5"
                 />
-                <FormInputDate
+               <FormInputDate
                   label="Date: "
                   name="released"
                   handler={handleOnChange}

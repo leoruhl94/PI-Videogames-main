@@ -3,12 +3,10 @@ const router = Router();
 const { Videogames, Genres, Platforms } = require("../db");
 const { API_KEY } = process.env;
 const axios = require("axios");
-
 const { validatePostVideogame } = require("../controllers/validations");
 
 router.post("/", async (req, res, next) => {
-  const { name, description, image, rating, released, platforms, genres } =
-    req.body;
+  const { name, description, image, rating, released, platforms, genres } = req.body;
   let error = validatePostVideogame(req.body);
 
   if (error.length)

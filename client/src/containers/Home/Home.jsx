@@ -6,11 +6,13 @@ import { Pagination } from "../../components/Pagination/Pagination";
 import "./Home.css";
 import { Cards } from "../../components/Cards/Cards";
 import { Header } from "../../components/Header/Header";
+import { useHistory } from "react-router";
 
 export const Home = () => {
+  const error = useSelector((state) => state.getError);
   const games = useSelector((state) => state.filteredGames);
   const [currentPage, setCurrentPage] = useState([]);
-
+  const history = useHistory();
   const getPage = (items) => {
     setCurrentPage(items);
   };
@@ -19,6 +21,9 @@ export const Home = () => {
   useEffect(() => {
     dispatch(getVideogames());
   }, [dispatch]);
+  useEffect(() => {
+    error.error && history.push({ pathname:`/${error.status}`, state: error})
+  }, [error, history]);
 
   return (
     <div className="home_background">

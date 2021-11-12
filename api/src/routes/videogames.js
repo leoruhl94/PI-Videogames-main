@@ -16,8 +16,8 @@ router.get('/', (req, res, next) => {
     let findGamesDb = Videogames.findAll({ include: Genres, where:{ name: {
         [Op.iLike]: "%" + name + "%"
     }}});
-
-   
+    
+    
     if(name){
         Promise.all([searchedApi, findGamesDb])
         .then((response) => {
@@ -38,13 +38,14 @@ router.get('/', (req, res, next) => {
                 if(a.name.length > b.name.length) return 1;
                 return 0;
             } )
-            gamesFiltered.length ? res.json(gamesFiltered.slice(0,15))
+            gamesFiltered.length 
+            ? res.json(gamesFiltered.slice(0,15))
             : res.status(200).json([{error: true, msj:`No hay resulados para: ${name}`}])
         })
         .catch((error) => {
             next(error);
         })
-      
+        
               
     } else {
         Promise.all([vgApi_1, vgApi_2, vgApi_3, videogamesDb])
@@ -68,6 +69,7 @@ router.get('/', (req, res, next) => {
             res.json(videogamesFilteredApi)
         })
         .catch((error) => {
+            res.status(404).json([{error: true, msj:`Sorry, Not Found`, status: 404}])
             next(error);
         })
     }
